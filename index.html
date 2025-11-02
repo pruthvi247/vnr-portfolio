@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="css/styles.css">
     
     <!-- Favicon -->
@@ -50,23 +51,26 @@
     <header class="newspaper-header">
         <div class="masthead">
             <div class="publication-info">
-                <div class="date-weather">
-                    <span id="currentDate"></span>
-                    <span class="weather">Delhi, India</span>
-                </div>
                 <div class="edition-info">
                     <span data-en="Digital Edition" data-te="డిజిటల్ ఎడిషన్">Digital Edition</span>
                 </div>
             </div>
             
             <div class="main-title">
-                <h1 class="newspaper-title">
-                    <span data-en="The People's Voice" data-te="ప్రజల స్వరం">The People's Voice</span>
-                    <div class="title-ornament">
-                        <div class="tricolor-line"></div>
+                <div class="title-with-logo">
+                    <div class="vnr-logo">
+                        <div class="logo-circle">VNR</div>
                     </div>
-                </h1>
-                <p class="tagline" data-en="Truth • Service • Progress" data-te="సత్యం • సేవ • పురోగతి">Truth • Service • Progress</p>
+                    <div class="title-content">
+                        <h1 class="newspaper-title">
+                            <span data-en="The People's Voice" data-te="ప్రజల స్వరం">The People's Voice</span>
+                            <div class="title-ornament">
+                                <div class="tricolor-line"></div>
+                            </div>
+                        </h1>
+                        <p class="tagline" data-en="Truth • Service • Progress" data-te="సత్యం • సేవ • పురోగతి">Truth • Service • Progress</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -106,10 +110,10 @@
                         In an exclusive conversation, the Hon. Leader outlines transformative policies for education, healthcare, and economic development that promise to reshape our nation's future.
                     </p>
                     <div class="cta-buttons">
-                        <button class="btn btn-primary" data-en="Join the Movement" data-te="ఉద్యమంలో చేరండి">
+                        <button class="btn btn-primary btn-gradient-primary" data-en="Join the Movement" data-te="ఉద్యమంలో చేరండి">
                             <i class="fas fa-users"></i> Join the Movement
                         </button>
-                        <button class="btn btn-secondary" data-en="Read Full Story" data-te="పూర్తి వార్త చదవండి">
+                        <button class="btn btn-secondary btn-gradient-blue" data-en="Read Full Story" data-te="పూర్తి వార్త చదవండి">
                             <i class="fas fa-arrow-right"></i> Read Full Story
                         </button>
                     </div>
@@ -122,21 +126,36 @@
                 </div>
             </div>
 
-            <!-- Side Stories -->
+            <!-- Side Stories Carousel -->
             <div class="side-stories">
-                <div class="story-card">
-                    <h3 data-en="Education Reform Bill Passes" data-te="విద్యా సంస్కరణ బిల్లు ఆమోదం">Education Reform Bill Passes</h3>
-                    <p data-en="Revolutionary changes to make quality education accessible to all" data-te="అందరికీ నాణ్యమైన విద్యను అందుబాటులో చేసే విప్లవాత్మక మార్పులు">Revolutionary changes to make quality education accessible to all</p>
+                <div class="stories-header">
+                    <h3 data-en="Breaking News" data-te="ప్रधान వార్తలు">Breaking News</h3>
+                    <div class="carousel-controls-small">
+                        <button class="carousel-btn-small prev" id="storiesPrev" aria-label="Previous story">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn-small next" id="storiesNext" aria-label="Next story">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="story-card">
-                    <h3 data-en="Healthcare Initiative Launch" data-te="ఆరోగ్య కార్యక్రమ ప్రారంభం">Healthcare Initiative Launch</h3>
-                    <p data-en="New mobile clinics reach remote villages across the state" data-te="కొత్త మొబైల్ క్లినిక్‌లు రాష్ట్రంలోని మారుమూల గ్రామాలను చేరుకుంటున్నాయి">New mobile clinics reach remote villages across the state</p>
+                <div class="stories-carousel-container">
+                    <div class="stories-carousel" id="sideStoriesCarousel">
+                        <!-- Stories will be loaded dynamically -->
+                        <div class="story-card loading">
+                            <div class="loading-content">
+                                <div class="loading-headline"></div>
+                                <div class="loading-summary"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="story-card">
-                    <h3 data-en="Youth Employment Drive" data-te="యువత ఉపాధి కార్యక్రమం">Youth Employment Drive</h3>
-                    <p data-en="10,000+ jobs created through skill development programs" data-te="నైపుణ్య అభివృద్ధి కార్యక్రమాల ద్వారా 10,000+ ఉద్యోగాలు సృష్టించారు">10,000+ jobs created through skill development programs</p>
+                
+                <div class="stories-indicators">
+                    <div class="story-dots" id="storyDots">
+                        <!-- Dots will be generated dynamically -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -367,7 +386,7 @@
                            data-te="కొత్త విద్యా విధానాలు మరియు మౌలిక సదుపాయాల అభివృద్ధి ప్రణాళికలపై పరస్పర చర్చ.">
                             Interactive discussion on new education policies and infrastructure development plans.
                         </p>
-                        <button class="btn btn-secondary" data-en="Register Now" data-te="ఇప్పుడే నమోదు చేసుకోండి">Register Now</button>
+                        <button class="btn btn-secondary btn-gradient-green" data-en="Register Now" data-te="ఇప్పుడే నమోదు చేసుకోండి">Register Now</button>
                     </div>
                 </div>
                 
@@ -384,7 +403,7 @@
                            data-te="ఉచిత ఆరోగ్య పరీక్షలు, టీకాకరణ కార్యక్రమం మరియు నివారణ ఆరోగ్య సంరక్షణపై అవగాహన సెషన్లు.">
                             Free health checkups, vaccination drive, and awareness sessions on preventive healthcare.
                         </p>
-                        <button class="btn btn-secondary" data-en="Volunteer" data-te="స్వచ్ఛంద సేవకుడు">Volunteer</button>
+                        <button class="btn btn-secondary btn-gradient-green" data-en="Volunteer" data-te="స్వచ్ఛంద సేవకుడు">Volunteer</button>
                     </div>
                 </div>
                 
@@ -401,7 +420,7 @@
                            data-te="డిజిటల్ బ్యాంకింగ్, ఇ-గవర్నెన్స్ మరియు ఆన్‌లైన్ సేవలపై వృద్ధులు మరియు గ్రామీణ యువతకు ప్రత్యక్ష శిక్షణ.">
                             Hands-on training for senior citizens and rural youth on digital banking, e-governance, and online services.
                         </p>
-                        <button class="btn btn-secondary" data-en="Join Workshop" data-te="వర్క్‌షాప్‌లో చేరండి">Join Workshop</button>
+                        <button class="btn btn-secondary btn-gradient-blue" data-en="Join Workshop" data-te="వర్క్‌షాప్‌లో చేరండి">Join Workshop</button>
                     </div>
                 </div>
             </div>
@@ -436,10 +455,10 @@
                         Providing clean drinking water infrastructure to 50 villages through sustainable water purification systems.
                     </p>
                     <div class="campaign-actions">
-                        <button class="btn btn-primary" data-en="Donate Now" data-te="ఇప్పుడే దానం చేయండి">
+                        <button class="btn btn-primary btn-gradient-primary" data-en="Donate Now" data-te="ఇప్పుడే దానం చేయండి">
                             <i class="fas fa-heart"></i> Donate Now
                         </button>
-                        <button class="btn btn-secondary" data-en="Share Campaign" data-te="ప్రచారాన్ని భాగస్వామ్యం చేయండి">
+                        <button class="btn btn-secondary btn-gradient-blue" data-en="Share Campaign" data-te="ప్రచారాన్ని భాగస్వామ్యం చేయండి">
                             <i class="fas fa-share-alt"></i> Share Campaign
                         </button>
                     </div>
@@ -489,10 +508,10 @@
                     Be part of the change you want to see. Join thousands of dedicated volunteers working for a better tomorrow.
                 </p>
                 <div class="volunteer-actions">
-                    <button class="btn btn-primary" data-en="Become a Volunteer" data-te="వాలంటీర్ అవండి">
+                    <button class="btn btn-primary btn-gradient-primary" data-en="Become a Volunteer" data-te="వాలంటీర్ అవండి">
                         <i class="fas fa-hands-helping"></i> Become a Volunteer
                     </button>
-                    <a href="https://wa.me/+919876543210" class="btn btn-secondary whatsapp-btn" target="_blank">
+                    <a href="https://wa.me/+919876543210" class="btn btn-secondary btn-gradient-green whatsapp-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> <span data-en="WhatsApp Group" data-te="వాట్సప్ గ్రూప్">WhatsApp Group</span>
                     </a>
                 </div>
@@ -808,7 +827,7 @@
                                       placeholder="Write your message here..."></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary btn-gradient-primary">
                             <i class="fas fa-paper-plane"></i> 
                             <span data-en="Send Message" data-te="సందేశం పంపండి">Send Message</span>
                         </button>
@@ -876,7 +895,7 @@
                     <div class="newsletter-input-group">
                         <input type="email" placeholder="Enter your email address" 
                                data-en="Enter your email address" data-te="మీ ఇమెయిల్ చిరునామా నమోదు చేయండి" required>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary btn-gradient-primary">
                             <i class="fas fa-envelope"></i> 
                             <span data-en="Subscribe" data-te="సబ్‌స్క్రైబ్ చేయండి">Subscribe</span>
                         </button>
@@ -923,5 +942,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="js/content-loader.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/carousel.js"></script>
 </body>
 </html>

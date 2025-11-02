@@ -12,22 +12,6 @@
 }
 
 :root {
-    /* Indian Tricolor Palette */
-    --saffron: #FF9933;
-    --white: #FFFFFF;
-    --green: #138808;
-    --navy-blue: #000080;
-    --deep-blue: #1e3a8a;
-    --gold: #FFD700;
-    
-    /* Newspaper Colors */
-    --newspaper-bg: #f8f6f0;
-    --newsprint: #2c2c2c;
-    --headline-black: #1a1a1a;
-    --border-gray: #d1d5db;
-    --light-gray: #f3f4f6;
-    --medium-gray: #6b7280;
-    
     /* Typography */
     --font-headline: 'Playfair Display', serif;
     --font-body: 'Crimson Text', serif;
@@ -67,7 +51,7 @@ body {
     right: 20px;
     z-index: 1000;
     background: var(--white);
-    border: 2px solid var(--saffron);
+    border: 2px solid var(--primary-blue);
     border-radius: 25px;
     padding: 8px 16px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -92,7 +76,7 @@ body {
 }
 
 .lang-option.active {
-    background: var(--saffron);
+    background: var(--primary-blue);
     color: var(--white);
 }
 
@@ -145,7 +129,7 @@ body {
 
 .tricolor-line {
     height: 6px;
-    background: linear-gradient(to right, var(--saffron) 33%, var(--white) 33% 66%, var(--green) 66%);
+    background: linear-gradient(to right, var(--primary-blue) 33%, var(--white) 33% 66%, var(--primary-green) 66%);
     margin: 0 auto;
     width: 200px;
     border: 1px solid var(--border-gray);
@@ -154,7 +138,7 @@ body {
 .tagline {
     font-family: var(--font-classic);
     font-size: 1.1rem;
-    color: var(--navy-blue);
+    color: var(--primary-blue);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -197,8 +181,8 @@ body {
 
 .nav-menu li a:hover,
 .nav-menu li a:focus {
-    background: var(--saffron);
-    border-bottom-color: var(--gold);
+    background: var(--primary-blue);
+    border-bottom-color: var(--primary-green);
     transform: translateY(-2px);
 }
 
@@ -294,29 +278,31 @@ body {
 }
 
 .btn-primary {
-    background: var(--saffron);
+    background: var(--gradient-primary);
     color: var(--white);
-    border: 2px solid var(--saffron);
+    border: none;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary:hover {
-    background: var(--white);
-    color: var(--saffron);
+    background: var(--gradient-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 153, 51, 0.3);
+    box-shadow: 0 8px 25px var(--shadow-blue);
 }
 
 .btn-secondary {
-    background: transparent;
-    color: var(--navy-blue);
-    border: 2px solid var(--navy-blue);
+    background: var(--gradient-saffron);
+    color: var(--headline-black);
+    border: none;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-secondary:hover {
-    background: var(--navy-blue);
-    color: var(--white);
+    background: var(--gradient-saffron-hover);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 128, 0.3);
+    box-shadow: 0 8px 25px var(--shadow-saffron);
 }
 
 .hero-image {
@@ -350,7 +336,9 @@ body {
 .side-stories {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .story-card {
@@ -1321,13 +1309,14 @@ textarea:focus {
 }
 
 .whatsapp-btn {
-    background: #25D366;
-    border-color: #25D366;
+    background: linear-gradient(135deg, #25D366 0%, #1DA851 100%);
+    border: none;
 }
 
 .whatsapp-btn:hover {
-    background: #1DA851;
-    border-color: #1DA851;
+    background: linear-gradient(135deg, #1DA851 0%, #128C40 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
 }
 
 /* =============================================================================
@@ -1363,9 +1352,11 @@ textarea:focus {
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: var(--saffron);
-    border-color: var(--saffron);
-    color: var(--white);
+    background: var(--gradient-saffron);
+    border: none;
+    color: var(--headline-black);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px var(--shadow-saffron);
 }
 
 .gallery-grid {
@@ -1608,8 +1599,8 @@ textarea:focus {
 }
 
 .carousel-btn {
-    background: var(--saffron);
-    color: var(--white);
+    background: var(--gradient-saffron);
+    color: var(--headline-black);
     border: none;
     width: 40px;
     height: 40px;
@@ -1622,8 +1613,10 @@ textarea:focus {
 }
 
 .carousel-btn:hover {
-    background: var(--navy-blue);
+    background: var(--gradient-primary);
+    color: var(--white);
     transform: scale(1.1);
+    box-shadow: 0 4px 15px var(--shadow-blue);
 }
 
 .carousel-dots {

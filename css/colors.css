@@ -1,0 +1,492 @@
+/* =============================================================================
+   COLOR VARIABLES - INDIAN POLITICAL PORTFOLIO
+   Comprehensive color palette with Indian tricolor theme and gradients
+   ============================================================================= */
+
+:root {
+    /* ========== PRIMARY THREE-COLOR PALETTE ========== */
+    --primary-blue: #0266B4;
+    --primary-blue-light: #0380E8;
+    --primary-blue-dark: #014A85;
+    
+    /* VNR Logo Gradient - Same as btn-gradient-primary (Join the Movement button) */
+    --vnr-logo-gradient: linear-gradient(135deg, #0266B4 60%, #008E46 100%);
+    
+    --primary-green: #008E46;
+    --primary-green-light: #00B559;
+    --primary-green-dark: #006633;
+    
+    --white: #FFFFFF;
+    --off-white: #FEFEFE;
+    --cream: #F9F9F9;
+    
+    /* ========== NEWSPAPER THEME COLORS ========== */
+    --newspaper-bg: #f9f9f9;
+    --newsprint: #2c2c2c;
+    --headline-black: #1a1a1a;
+    --ink-black: #000000;
+    
+    /* ========== GRAY SCALE ========== */
+    --border-gray: #e5e7eb;
+    --light-gray: #f3f4f6;
+    --medium-gray: #6b7280;
+    --dark-gray: #374151;
+    --charcoal: #1f2937;
+    
+    /* ========== GRADIENT COMBINATIONS ========== */
+    
+    /* Primary Political Gradient (Blue to Green) */
+    --gradient-primary: linear-gradient(135deg, #0266B4 60%, #008E46 100%);
+    --gradient-primary-hover: linear-gradient(135deg, #014A85 60%, #006633 100%);
+    
+    /* Blue Variations */
+    --gradient-blue: linear-gradient(135deg, #0380E8 0%, #0266B4 100%);
+    --gradient-blue-dark: linear-gradient(135deg, #0266B4 0%, #014A85 100%);
+    
+    /* Green Variations */
+    --gradient-green: linear-gradient(135deg, #00B559 0%, #008E46 100%);
+    --gradient-green-dark: linear-gradient(135deg, #008E46 0%, #006633 100%);
+    
+    /* White to Blue/Green */
+    --gradient-white-blue: linear-gradient(135deg, #FFFFFF 0%, #0266B4 100%);
+    --gradient-white-green: linear-gradient(135deg, #FFFFFF 0%, #008E46 100%);
+    
+    /* Neutral Gradients */
+    --gradient-gray: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+    --gradient-newspaper: linear-gradient(135deg, #f9f9f9 0%, #e5e7eb 100%);
+    
+    /* ========== SUCCESS, WARNING, ERROR STATES ========== */
+    --success: #008E46;
+    --success-light: #00B559;
+    --success-dark: #006633;
+    --gradient-success: linear-gradient(135deg, #008E46 0%, #006633 100%);
+    
+    --warning: #0266B4;
+    --warning-light: #0380E8;
+    --warning-dark: #014A85;
+    --gradient-warning: linear-gradient(135deg, #0266B4 0%, #014A85 100%);
+    
+    --error: #6b7280;
+    --error-light: #9ca3af;
+    --error-dark: #374151;
+    --gradient-error: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+    
+    /* ========== INTERACTIVE STATES ========== */
+    --hover-overlay: rgba(0, 0, 0, 0.05);
+    --active-overlay: rgba(0, 0, 0, 0.1);
+    --focus-ring: rgba(2, 102, 180, 0.3);
+    
+    /* ========== TRANSPARENCY VARIATIONS ========== */
+    --blue-alpha-10: rgba(2, 102, 180, 0.1);
+    --blue-alpha-20: rgba(2, 102, 180, 0.2);
+    --blue-alpha-50: rgba(2, 102, 180, 0.5);
+    
+    --green-alpha-10: rgba(0, 142, 70, 0.1);
+    --green-alpha-20: rgba(0, 142, 70, 0.2);
+    --green-alpha-50: rgba(0, 142, 70, 0.5);
+    
+    --white-alpha-90: rgba(255, 255, 255, 0.9);
+    --black-alpha-50: rgba(0, 0, 0, 0.5);
+    --black-alpha-75: rgba(0, 0, 0, 0.75);
+    
+    /* ========== SHADOW COLORS ========== */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-dark: rgba(0, 0, 0, 0.25);
+    --shadow-blue: rgba(2, 102, 180, 0.3);
+    --shadow-green: rgba(0, 142, 70, 0.3);
+}
+
+/* ========== BUTTON GRADIENT CLASSES ========== */
+
+/* Primary gradient button - Blue to Green */
+.btn-gradient-primary {
+    background: var(--gradient-primary);
+    color: var(--white);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-primary:hover {
+    background: var(--gradient-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow-blue);
+}
+
+/* Blue gradient button */
+.btn-gradient-blue {
+    background: var(--gradient-blue);
+    color: var(--white);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-blue:hover {
+    background: var(--gradient-blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow-blue);
+}
+
+/* Green gradient button */
+.btn-gradient-green {
+    background: var(--gradient-green);
+    color: var(--white);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-green:hover {
+    background: var(--gradient-green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow-green);
+}
+
+/* ========== UTILITY GRADIENT CLASSES ========== */
+
+.bg-gradient-primary { background: var(--gradient-primary); }
+.bg-gradient-blue { background: var(--gradient-blue); }
+.bg-gradient-green { background: var(--gradient-green); }
+.bg-gradient-white-blue { background: var(--gradient-white-blue); }
+.bg-gradient-white-green { background: var(--gradient-white-green); }
+
+/* ========== COLOR SCHEME MEDIA QUERIES ========== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --newspaper-bg: #1a1a1a;
+        --newsprint: #e5e7eb;
+        --headline-black: #f9fafb;
+        --border-gray: #374151;
+        --light-gray: #1f2937;
+        --medium-gray: #9ca3af;
+    }
+}
+
+/* ========== HIGH CONTRAST MODE ========== */
+
+@media (prefers-contrast: high) {
+    :root {
+        --gradient-primary: linear-gradient(135deg, #014A85 60%, #006633 100%);
+        --gradient-blue: linear-gradient(135deg, #0266B4 0%, #014A85 100%);
+        --gradient-green: linear-gradient(135deg, #008E46 0%, #006633 100%);
+        --shadow-light: rgba(0, 0, 0, 0.5);
+        --shadow-medium: rgba(0, 0, 0, 0.7);
+        --shadow-dark: rgba(0, 0, 0, 0.9);
+    }
+}
+
+/* ========== REDUCED MOTION PREFERENCE ========== */
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-gradient-primary,
+    .btn-gradient-blue,
+    .btn-gradient-green {
+        transition: none;
+    }
+    
+    .btn-gradient-primary:hover,
+    .btn-gradient-blue:hover,
+    .btn-gradient-green:hover {
+        transform: none;
+    }
+}
+
+/* ========== VNR LOGO STYLES ========== */
+
+/* Title with logo layout */
+.title-with-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.vnr-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.title-content {
+    text-align: center;
+}
+
+.logo-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--vnr-logo-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-headline);
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: 0.1em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 18px var(--shadow-blue);
+    transition: all 0.3s ease;
+    border: 4px solid var(--white);
+}
+
+.logo-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px var(--shadow-blue);
+    background: var(--gradient-primary-hover);
+}
+
+/* Responsive logo sizing and layout */
+@media (max-width: 768px) {
+    .title-with-logo {
+        gap: 1.5rem;
+    }
+    
+    .logo-circle {
+        width: 65px;
+        height: 65px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-with-logo {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .logo-circle {
+        width: 55px;
+        height: 55px;
+        font-size: 1rem;
+        border: 3px solid var(--white);
+    }
+}
+
+/* ========== SIDE STORIES CAROUSEL ========== */
+
+.stories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.stories-header h3 {
+    font-family: var(--font-headline);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.carousel-controls-small {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-btn-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--gradient-blue);
+    color: var(--white);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.carousel-btn-small:hover {
+    background: var(--gradient-blue-dark);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px var(--shadow-blue);
+}
+
+.stories-carousel-container {
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 100%;
+}
+
+.stories-carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    min-height: 200px;
+    width: 100%;
+}
+
+/* Carousel specific story card styles - inherits base styles from styles.css */
+.stories-carousel .story-card {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    /* Inherits padding, border, background, and other styles from styles.css */
+}
+
+.story-card.featured {
+    border-left: 4px solid var(--primary-blue);
+    background: var(--gradient-white-blue);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Story card typography inherits from styles.css */
+
+.story-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border-gray);
+}
+
+.story-category {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.story-date {
+    font-weight: 500;
+}
+
+.stories-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.story-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.story-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--medium-gray);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.story-dot.active {
+    background: var(--primary-blue);
+    transform: scale(1.2);
+}
+
+/* Loading state */
+.story-card.loading {
+    pointer-events: none;
+}
+
+.loading-content {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-headline,
+.loading-summary {
+    background: var(--light-gray);
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+}
+
+.loading-headline {
+    height: 24px;
+    width: 80%;
+}
+
+.loading-summary {
+    height: 16px;
+    width: 100%;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Responsive carousel */
+@media (max-width: 768px) {
+    .stories-header h3 {
+        font-size: 1rem;
+    }
+    
+    .carousel-btn-small {
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stories-header {
+        padding: 0 0.5rem;
+    }
+}
+
+/* ========== SMALL STORY IMAGES ========== */
+
+.story-image-small {
+    width: 100%;
+    max-width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.story-image-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.story-card:hover .story-image-small img {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments for small images */
+@media (max-width: 768px) {
+    .story-image-small {
+        height: 80px;
+        margin-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-image-small {
+        height: 70px;
+        margin-bottom: 0.6rem;
+    }
+}

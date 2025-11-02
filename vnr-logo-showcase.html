@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNR Logo Showcase</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/colors.css">
+    
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #f9f9f9 0%, #e5e7eb 100%);
+            padding: 3rem;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .showcase-container {
+            background: white;
+            padding: 4rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .showcase-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: var(--vnr-logo-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo-variations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .logo-demo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .demo-label {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        /* Different logo sizes */
+        .logo-large .logo-circle {
+            width: 80px;
+            height: 80px;
+            font-size: 1.5rem;
+        }
+        
+        .logo-medium .logo-circle {
+            width: 60px;
+            height: 60px;
+            font-size: 1.2rem;
+        }
+        
+        .logo-small .logo-circle {
+            width: 45px;
+            height: 45px;
+            font-size: 0.9rem;
+        }
+        
+        /* Alternative gradient */
+        .logo-alt .logo-circle {
+            background: linear-gradient(135deg, #014A85 0%, #0266B4 100%);
+        }
+        
+        .color-info {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        
+        .color-swatches {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .swatch-primary { background: #0266B4; }
+        .swatch-dark { background: #014A85; }
+        .swatch-gradient { background: var(--vnr-logo-gradient); }
+    </style>
+</head>
+<body>
+    <div class="showcase-container">
+        <h1 class="showcase-title">VNR Logo</h1>
+        
+        <div class="logo-variations">
+            <div class="logo-demo">
+                <div class="demo-label">Large Logo</div>
+                <div class="vnr-logo logo-large">
+                    <div class="logo-circle">VNR</div>
+                </div>
+            </div>
+            
+            <div class="logo-demo">
+                <div class="demo-label">Standard Logo</div>
+                <div class="vnr-logo logo-medium">
+                    <div class="logo-circle">VNR</div>
+                </div>
+            </div>
+            
+            <div class="logo-demo">
+                <div class="demo-label">Small Logo</div>
+                <div class="vnr-logo logo-small">
+                    <div class="logo-circle">VNR</div>
+                </div>
+            </div>
+            
+            <div class="logo-demo">
+                <div class="demo-label">Alternative Gradient</div>
+                <div class="vnr-logo logo-alt logo-medium">
+                    <div class="logo-circle">VNR</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="color-info">
+            <h3>Logo Color Specification</h3>
+            <p>Gradient: Linear gradient from #0266B4 to #014A85</p>
+            <p>Direction: 135 degrees (diagonal)</p>
+            
+            <div class="color-swatches">
+                <div class="color-swatch swatch-primary">
+                    #0266B4
+                </div>
+                <div class="color-swatch swatch-dark">
+                    #014A85
+                </div>
+                <div class="color-swatch swatch-gradient">
+                    Gradient
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem; padding: 2rem; background: var(--newspaper-bg); border-radius: 10px;">
+            <h3>Implementation Details</h3>
+            <ul style="text-align: left; display: inline-block;">
+                <li>Circular design with 3D shadow effect</li>
+                <li>White border for definition</li>
+                <li>Hover animation with scale effect</li>
+                <li>Responsive sizing for mobile devices</li>
+                <li>High contrast white text</li>
+                <li>Professional gradient using your specified colors</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{
+  "side_stories": [
+    {
+      "id": "story_1",
+      "headline": {
+        "en": "Education Reform Bill Passes",
+        "te": "విద్యా సంస్కరణ బిల్లు ఆమోదం"
+      },
+      "summary": {
+        "en": "Revolutionary changes to make quality education accessible to all citizens across the nation",
+        "te": "దేశవ్యాప్తంగా అందరు పౌరులకు నాణ్యమైన విద్యను అందుబాటులో చేసే విప్లవాత్మక మార్పులు"
+      },
+      "category": "Education",
+      "date": "2024-11-01",
+      "featured": true
+    },
+    {
+      "id": "story_2", 
+      "headline": {
+        "en": "Healthcare Initiative Launch",
+        "te": "ఆరోగ్య కార్యక్రమ ప్రారంభం"
+      },
+      "summary": {
+        "en": "New mobile clinics reach remote villages across the state, bringing quality healthcare to doorsteps",
+        "te": "కొత్త మొబైల్ క్లినిక్‌లు రాష్ట్రంలోని మారుమూల గ్రామాలను చేరుకుంటున్నాయి, తలుపుల వరకు నాణ్యమైన ఆరోగ్య సేవలను అందిస్తున్నాయి"
+      },
+      "category": "Healthcare",
+      "date": "2024-10-28",
+      "featured": false
+    },
+    {
+      "id": "story_3",
+      "headline": {
+        "en": "Youth Employment Drive",
+        "te": "యువత ఉపాధి కార్యక్రమం"
+      },
+      "summary": {
+        "en": "10,000+ jobs created through comprehensive skill development programs targeting unemployed youth",
+        "te": "నిరుద్యోగ యువతను లక్ష్యంగా చేసుకుని సమగ్ర నైపుణ్య అభివృద్ధి కార్యక్రమాల ద్వారా 10,000+ ఉద్యోగాలు సృష్టించారు"
+      },
+      "category": "Employment",
+      "date": "2024-10-25",
+      "featured": false
+    },
+    {
+      "id": "story_4",
+      "headline": {
+        "en": "Clean Water Project Success",
+        "te": "శుభ్రమైన నీటి ప్రాజెక్ట్ విజయం"
+      },
+      "summary": {
+        "en": "50 villages now have access to clean drinking water through innovative purification systems",
+        "te": "వినూత్న శుద్దీకరణ వ్యవస్థల ద్వారా ఇప్పుడు 50 గ్రామాలకు శుభ్రమైన తాగునీరు అందుబాటులో ఉంది"
+      },
+      "category": "Infrastructure",
+      "date": "2024-10-22",
+      "featured": false
+    },
+    {
+      "id": "story_5",
+      "headline": {
+        "en": "Digital Governance Milestone",
+        "te": "డిజిటల్ పాలన మైలురాయి"
+      },
+      "summary": {
+        "en": "200 government services now available online, reducing bureaucracy and improving efficiency",
+        "te": "200 ప్రభుత్వ సేవలు ఇప్పుడు ఆన్‌లైన్‌లో అందుబాటులో ఉన్నాయి, అధికారికవాదాన్ని తగ్గించి సమర్థతను మెరుగుపరుస్తున్నాయి"
+      },
+      "category": "Technology",
+      "date": "2024-10-20",
+      "featured": false
+    },
+    {
+      "id": "story_6",
+      "headline": {
+        "en": "Women Empowerment Achievement",
+        "te": "మహిళా సాధికారత విజయం"
+      },
+      "summary": {
+        "en": "25,000 women entrepreneurs trained and supported with micro-financing for sustainable businesses",
+        "te": "25,000 మహిళా వ్యవసాయులకు శిక్షణ ఇచ్చి స్థిరమైన వ్యాపారాల కోసం మైక్రో-ఫైనాన్సింగ్‌తో మద్దతు అందించారు"
+      },
+      "category": "Empowerment",
+      "date": "2024-10-18",
+      "featured": false
+    }
+  ]
+}

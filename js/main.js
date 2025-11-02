@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeApp() {
     // Initialize all components
     setupLanguageToggle();
+    setupVNRLogo();
     setupMobileNavigation();
     setupSmoothScrolling();
     setupAnimations();
-    updateCurrentDate();
     setupFormHandlers();
     setupNewsletterSignup();
     setupGalleryFilters();
@@ -100,35 +100,25 @@ function setLanguage(lang) {
     // Update HTML lang attribute
     document.documentElement.lang = lang === 'te' ? 'te-IN' : 'en-IN';
     
-    // Update date display
-    updateCurrentDate();
-    
     // Trigger custom event for other components
     document.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
 }
 
 // =============================================================================
-// DATE AND TIME FUNCTIONALITY
+// VNR LOGO FUNCTIONALITY
 // =============================================================================
 
-function updateCurrentDate() {
-    const dateElement = document.getElementById('currentDate');
-    if (!dateElement) return;
+function setupVNRLogo() {
+    const logoCircle = document.querySelector('.logo-circle');
+    if (!logoCircle) return;
     
-    const now = new Date();
-    
-    if (CONFIG.currentLanguage === 'te') {
-        // Custom Telugu date formatting
-        const day = teluguTranslations.days[now.getDay()];
-        const date = now.getDate();
-        const month = teluguTranslations.months[now.getMonth()];
-        const year = now.getFullYear();
-        
-        dateElement.textContent = `${day}, ${date} ${month} ${year}`;
-    } else {
-        // English date formatting
-        dateElement.textContent = now.toLocaleDateString('en-IN', CONFIG.dateFormat.en);
-    }
+    // Add click animation
+    logoCircle.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 150);
+    });
 }
 
 // =============================================================================

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Button Showcase - Indian Political Portfolio</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/colors.css">
+    
+    <style>
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--newspaper-bg);
+            color: var(--newsprint);
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .showcase-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px var(--shadow-medium);
+        }
+        
+        .showcase-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .showcase-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 3rem;
+        }
+        
+        .button-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--headline-black);
+            border-left: 5px solid var(--saffron);
+            padding-left: 1rem;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .button-demo {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-gray);
+        }
+        
+        .button-label {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--headline-black);
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0.5rem;
+        }
+        
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .color-swatch {
+            padding: 2rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .gradient-bg-1 { background: var(--gradient-primary); }
+        .gradient-bg-2 { background: var(--gradient-saffron); }
+        .gradient-bg-3 { background: var(--gradient-tricolor); }
+        .gradient-bg-4 { background: var(--gradient-success); }
+        .gradient-bg-5 { background: var(--gradient-blue-light); }
+        .gradient-bg-6 { background: var(--gradient-green-light); }
+        
+        .usage-example {
+            background: var(--newspaper-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--royal-blue);
+        }
+        
+        .code-block {
+            background: var(--headline-black);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="showcase-container">
+        <h1 class="showcase-title">Gradient Button Showcase</h1>
+        <p class="showcase-subtitle">Beautiful gradient buttons for Indian Political Portfolio Website</p>
+        
+        <!-- Primary Gradient Buttons -->
+        <div class="button-section">
+            <h2 class="section-title">Primary Gradient Buttons</h2>
+            <div class="button-grid">
+                <div class="button-demo">
+                    <div class="button-label">Primary Gradient (Blue to Green)</div>
+                    <button class="btn btn-gradient-primary">
+                        <i class="fas fa-users"></i> Join the Movement
+                    </button>
+                </div>
+                
+                <div class="button-demo">
+                    <div class="button-label">Saffron Gradient (Orange to Gold)</div>
+                    <button class="btn btn-gradient-saffron">
+                        <i class="fas fa-heart"></i> Donate Now
+                    </button>
+                </div>
+                
+                <div class="button-demo">
+                    <div class="button-label">Success Gradient (Green Variations)</div>
+                    <button class="btn btn-gradient-success">
+                        <i class="fas fa-check"></i> Register Now
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Button Variations -->
+        <div class="button-section">
+            <h2 class="section-title">Button Size Variations</h2>
+            <div class="button-grid">
+                <div class="button-demo">
+                    <div class="button-label">Large Primary Button</div>
+                    <button class="btn btn-gradient-primary" style="padding: 1.5rem 3rem; font-size: 1.2rem;">
+                        <i class="fas fa-star"></i> Featured Action
+                    </button>
+                </div>
+                
+                <div class="button-demo">
+                    <div class="button-label">Small Saffron Button</div>
+                    <button class="btn btn-gradient-saffron" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+                
+                <div class="button-demo">
+                    <div class="button-label">Round Success Button</div>
+                    <button class="btn btn-gradient-success" style="border-radius: 25px;">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interactive Buttons -->
+        <div class="button-section">
+            <h2 class="section-title">Interactive Button Examples</h2>
+            <div class="button-grid">
+                <div class="button-demo">
+                    <div class="button-label">Contact Form Submit</div>
+                    <button class="btn btn-gradient-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </div>
+                
+                <div class="button-demo">
+                    <div class="button-label">Newsletter Subscription</div>
+                    <button class="btn btn-gradient-saffron">
+                        <i class="fas fa-envelope"></i> Subscribe
+                    </button>
+                </div>
+                
+                <div class="button-demo">
+                    <div class="button-label">WhatsApp Integration</div>
+                    <button class="btn btn-gradient-success">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Group
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Color Palette Display -->
+        <div class="button-section">
+            <h2 class="section-title">Gradient Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-swatch gradient-bg-1">
+                    Primary Gradient<br>
+                    <small>Blue → Green</small>
+                </div>
+                <div class="color-swatch gradient-bg-2">
+                    Saffron Gradient<br>
+                    <small>Orange → Gold</small>
+                </div>
+                <div class="color-swatch gradient-bg-3">
+                    Tricolor Gradient<br>
+                    <small>Saffron → White → Green</small>
+                </div>
+                <div class="color-swatch gradient-bg-4">
+                    Success Gradient<br>
+                    <small>Green Variations</small>
+                </div>
+                <div class="color-swatch gradient-bg-5">
+                    Blue Light Gradient<br>
+                    <small>Light Blue → Royal Blue</small>
+                </div>
+                <div class="color-swatch gradient-bg-6">
+                    Green Light Gradient<br>
+                    <small>Light Green → Dark Green</small>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Usage Instructions -->
+        <div class="button-section">
+            <h2 class="section-title">Usage Instructions</h2>
+            <div class="usage-example">
+                <h3>How to Use Gradient Buttons</h3>
+                <p>Simply add the gradient class to your existing button elements:</p>
+                
+                <div class="code-block">
+&lt;!-- Primary gradient button --&gt;
+&lt;button class="btn btn-primary btn-gradient-primary"&gt;
+    &lt;i class="fas fa-users"&gt;&lt;/i&gt; Join the Movement
+&lt;/button&gt;
+
+&lt;!-- Saffron gradient button --&gt;
+&lt;button class="btn btn-secondary btn-gradient-saffron"&gt;
+    &lt;i class="fas fa-heart"&gt;&lt;/i&gt; Donate Now
+&lt;/button&gt;
+
+&lt;!-- Success gradient button --&gt;
+&lt;button class="btn btn-gradient-success"&gt;
+    &lt;i class="fas fa-check"&gt;&lt;/i&gt; Register
+&lt;/button&gt;
+                </div>
+                
+                <h3>Available Gradient Classes</h3>
+                <ul>
+                    <li><code>.btn-gradient-primary</code> - Blue to Green political gradient</li>
+                    <li><code>.btn-gradient-saffron</code> - Saffron to Gold traditional gradient</li>
+                    <li><code>.btn-gradient-success</code> - Green success gradient</li>
+                </ul>
+                
+                <h3>CSS Variables Used</h3>
+                <div class="code-block">
+--gradient-primary: linear-gradient(135deg, #0266B4 60%, #008E46 100%);
+--gradient-saffron: linear-gradient(135deg, #FF9933 0%, #FFD700 100%);
+--gradient-success: linear-gradient(135deg, #10b981 0%, #047857 100%);
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
