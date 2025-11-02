@@ -1,0 +1,101 @@
+{
+  "site": {
+    "title": "Hon. Leader Name - Serving the Nation",
+    "tagline": "Truth • Service • Progress",
+    "newspaper_name": "The People's Voice",
+    "description": "Modern Indian Political Leader serving with Vision and Integrity"
+  },
+  "navigation": {
+    "breaking": "Breaking",
+    "profile": "Profile",
+    "manifesto": "Manifesto",
+    "initiatives": "Initiatives",
+    "events": "Events",
+    "campaigns": "Campaigns",
+    "gallery": "Gallery",
+    "voices": "Voices",
+    "contact": "Contact"
+  },
+  "hero": {
+    "breaking_banner": "EXCLUSIVE INTERVIEW",
+    "main_headline": "LEADER UNVEILS VISION FOR NEW INDIA",
+    "lead_story": "In an exclusive conversation, the Hon. Leader outlines transformative policies for education, healthcare, and economic development that promise to reshape our nation's future.",
+    "cta_primary": "Join the Movement",
+    "cta_secondary": "Read Full Story",
+    "image_caption": "Hon. Leader addressing a public gathering in New Delhi",
+    "side_stories": [
+      {
+        "headline": "Education Reform Bill Passes",
+        "summary": "Revolutionary changes to make quality education accessible to all"
+      },
+      {
+        "headline": "Healthcare Initiative Launch",
+        "summary": "New mobile clinics reach remote villages across the state"
+      },
+      {
+        "headline": "Youth Employment Drive",
+        "summary": "10,000+ jobs created through skill development programs"
+      }
+    ],
+    "ticker": "New infrastructure projects approved for rural development • Digital literacy program reaches 50,000 students • Clean energy initiative shows 40% reduction in emissions"
+  },
+  "about": {
+    "section_category": "IN-DEPTH PROFILE",
+    "section_title": "The Leader Behind the Vision",
+    "quote": "True leadership is not about holding power, but about empowering others to reach their fullest potential.",
+    "biography": [
+      "Born in a humble family in rural India, Hon. Leader Name's journey from grassroots activism to national leadership exemplifies the power of determination and service. With advanced degrees in Public Administration and Economics, the leader has dedicated their life to bridging the gap between governance and ground reality.",
+      "Starting as a community organizer, they have championed causes ranging from women's empowerment to digital literacy, always maintaining an unwavering commitment to transparency and accountability in public service."
+    ],
+    "stats": [
+      {
+        "number": "15+",
+        "label": "Years in Public Service"
+      },
+      {
+        "number": "100+",
+        "label": "Bills Sponsored"
+      },
+      {
+        "number": "5M+",
+        "label": "Lives Impacted"
+      }
+    ],
+    "timeline": [
+      {
+        "year": "2008",
+        "event": "Started grassroots activism"
+      },
+      {
+        "year": "2014",
+        "event": "First elected to State Assembly"
+      },
+      {
+        "year": "2019",
+        "event": "Elected to Parliament"
+      },
+      {
+        "year": "2024",
+        "event": "Re-elected with record margin"
+      }
+    ]
+  },
+  "manifesto": {
+    "section_category": "POLICY SPOTLIGHT",
+    "section_title": "Vision for Tomorrow's India",
+    "pillars": [
+      {
+        "title": "Education Revolution",
+        "description": "Quality education accessible to every child, with focus on digital literacy and skill development for the 21st century."
+      },
+      {
+        "title": "Healthcare for All",
+        "description": "Universal healthcare coverage with mobile clinics, telemedicine, and preventive care reaching every village."
+      },
+      {
+        "title": "Green Economy",
+        "description": "Sustainable development through renewable energy, organic farming, and environmental conservation initiatives."
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "section_category": "UPCOMING EVENTS",
+  "section_title": "Join the Movement",
+  "events": [
+    {
+      "date": {
+        "day": "15",
+        "month": "Nov"
+      },
+      "title": "Town Hall Meeting - Education Reform",
+      "location": "Community Center, Hyderabad",
+      "time": "10:00 AM - 12:00 PM",
+      "description": "Interactive discussion on new education policies and infrastructure development plans.",
+      "cta": "Register Now"
+    },
+    {
+      "date": {
+        "day": "22",
+        "month": "Nov"
+      },
+      "title": "Healthcare Awareness Campaign",
+      "location": "Various Villages",
+      "time": "9:00 AM - 6:00 PM",
+      "description": "Free health checkups, vaccination drive, and awareness sessions on preventive healthcare.",
+      "cta": "Volunteer"
+    },
+    {
+      "date": {
+        "day": "30",
+        "month": "Nov"
+      },
+      "title": "Digital Literacy Workshop",
+      "location": "Technology Hub, Vijayawada",
+      "time": "2:00 PM - 5:00 PM",
+      "description": "Hands-on training for senior citizens and rural youth on digital banking, e-governance, and online services.",
+      "cta": "Join Workshop"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "section_category": "ACTIVE CAMPAIGNS",
+  "section_title": "Be Part of the Change",
+  "featured_campaign": {
+    "tag": "FEATURED",
+    "title": "Clean Water for All",
+    "progress": 75,
+    "raised": "₹45L Raised of ₹60L Goal",
+    "supporters": "1,250+ Supporters",
+    "description": "Providing clean drinking water infrastructure to 50 villages through sustainable water purification systems.",
+    "cta_primary": "Donate Now",
+    "cta_secondary": "Share Campaign"
+  },
+  "other_campaigns": [
+    {
+      "title": "Youth Skill Development",
+      "progress": 60,
+      "target": "Target: 10,000 Youth Trained",
+      "count": "2,890 Enrolled"
+    },
+    {
+      "title": "Green Energy Initiative",
+      "progress": 45,
+      "target": "Target: 500 Solar Installations",
+      "count": "225 Completed"
+    },
+    {
+      "title": "Digital Governance",
+      "progress": 80,
+      "target": "Target: 200 Villages Connected",
+      "count": "160 Online"
+    }
+  ],
+  "volunteer_section": {
+    "title": "Join Our Volunteer Network",
+    "description": "Be part of the change you want to see. Join thousands of dedicated volunteers working for a better tomorrow.",
+    "cta_primary": "Become a Volunteer",
+    "cta_secondary": "WhatsApp Group"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "section_category": "సంప్రదించండి",
+  "section_title": "మీ అభిప్రాయం ముఖ్యం",
+  "intro": {
+    "title": "మాతో అనుసంధానం చేయండి",
+    "description": "మేము అందుబాటులో ఉండే పాలనను నమ్ముతాము. ఏవైనా ఆందోళనలు, సూచనలు లేదా సహకార అవకాశాల కోసం అనేక మార్గాల ద్వారా మాను సంప్రదించండి."
+  },
+  "contact_methods": [
+    {
+      "icon": "fas fa-map-marker-alt",
+      "title": "ప్రధాన కార్యాలయం",
+      "details": "పార్లమెంట్ హౌస్, న్యూఢిల్లీ - 110001"
+    },
+    {
+      "icon": "fas fa-building",
+      "title": "నియోజకవర్గ కార్యాలయం",
+      "details": "MLA క్వార్టర్స్, హైదరాబాద్ - 500001"
+    },
+    {
+      "icon": "fas fa-phone",
+      "title": "ఫోన్",
+      "details": "+91-11-2301-XXXX (కార్యాలయం)\n+91-98765-43210 (ప్రజా హెల్ప్‌లైన్)"
+    },
+    {
+      "icon": "fas fa-envelope",
+      "title": "ఇమెయిల్",
+      "details": "contact@leaderportfolio.in\npublic.grievances@leaderportfolio.in"
+    }
+  ],
+  "office_hours": {
+    "title": "కార్యాలయ సమయం",
+    "schedule": [
+      {"days": "సోమ-శుక్ర:", "time": "9:00 AM - 6:00 PM"},
+      {"days": "శనివారం:", "time": "10:00 AM - 2:00 PM (ప్రజా సమావేశం)"},
+      {"days": "ఆదివారం:", "time": "క్షేత్ర పర్యటనలు"}
+    ]
+  },
+  "contact_form": {
+    "title": "సందేశం పంపండి",
+    "fields": {
+      "first_name": "మొదటి పేరు *",
+      "last_name": "చివరి పేరు *",
+      "email": "ఇమెయిల్ *",
+      "phone": "ఫోన్",
+      "subject": "విషయం *",
+      "message": "సందేశం *"
+    },
+    "subject_options": [
+      {"value": "", "label": "అంశాన్ని ఎంచుకోండి"},
+      {"value": "general", "label": "సాధారణ విచారణ"},
+      {"value": "grievance", "label": "ప్రజా వేదన"},
+      {"value": "suggestion", "label": "విధాన సూచన"},
+      {"value": "collaboration", "label": "సహకారం"},
+      {"value": "media", "label": "మీడియా విచారణ"}
+    ],
+    "submit_button": "సందేశం పంపండి"
+  },
+  "social_media": {
+    "title": "మా ప్రయాణాన్ని అనుసరించండి",
+    "platforms": [
+      {"name": "Facebook", "followers": "500K+ అనుచరులు", "icon": "fab fa-facebook-f"},
+      {"name": "Twitter", "followers": "250K+ అనుచరులు", "icon": "fab fa-twitter"},
+      {"name": "Instagram", "followers": "300K+ అనుచరులు", "icon": "fab fa-instagram"},
+      {"name": "YouTube", "followers": "150K+ చందాదారులు", "icon": "fab fa-youtube"},
+      {"name": "WhatsApp", "followers": "వేగవంతమైన నవీకరణలు", "icon": "fab fa-whatsapp"}
+    ]
+  },
+  "newsletter": {
+    "title": "తాజా సమాచారం పొందండి",
+    "description": "విధానాలు, కార్యక్రమాలు మరియు సమాజ కార్యక్రమాలపై తాజా నవీకరణలను నేరుగా మీ ఇన్‌బాక్స్‌లో పొందండి.",
+    "placeholder": "మీ ఇమెయిల్ చిరునామా నమోదు చేయండి",
+    "button": "సబ్‌స్క్రైబ్ చేయండి"
+  }
+}

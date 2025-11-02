@@ -1,0 +1,30 @@
+{
+  "section_category": "GROUND REPORT",
+  "section_title": "Transforming Communities",
+  "initiatives": [
+    {
+      "title": "Digital Education Revolution",
+      "description": "Bringing quality education to remote villages through mobile learning labs and satellite internet connectivity.",
+      "impact_number": "50K+",
+      "impact_label": "Students",
+      "progress": 85,
+      "image": "education-initiative.jpg"
+    },
+    {
+      "title": "Mobile Health Clinics",
+      "description": "Comprehensive healthcare services reaching doorsteps with telemedicine support and specialist consultations.",
+      "impact_number": "100+",
+      "impact_label": "Villages",
+      "progress": 70,
+      "image": "healthcare-initiative.jpg"
+    },
+    {
+      "title": "Women Entrepreneurship Program",
+      "description": "Empowering women through skill development, micro-financing, and market linkages for sustainable livelihoods.",
+      "impact_number": "25K+",
+      "impact_label": "Women",
+      "progress": 92,
+      "image": "women-empowerment.jpg"
+    }
+  ]
+}

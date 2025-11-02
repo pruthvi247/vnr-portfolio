@@ -1,0 +1,65 @@
+{
+  "section_category": "PHOTO GALLERY",
+  "section_title": "Moments That Matter",
+  "filters": [
+    {"id": "all", "label": "All"},
+    {"id": "events", "label": "Events"},
+    {"id": "initiatives", "label": "Initiatives"},
+    {"id": "meetings", "label": "Meetings"},
+    {"id": "community", "label": "Community"}
+  ],
+  "gallery_items": [
+    {
+      "category": "events",
+      "image": "gallery/event-1.jpg",
+      "title": "Community Rally for Education",
+      "description": "Thousands gather to support education reform"
+    },
+    {
+      "category": "initiatives",
+      "image": "gallery/initiative-1.jpg",
+      "title": "Mobile Health Clinic Launch",
+      "description": "Bringing healthcare to rural communities"
+    },
+    {
+      "category": "meetings",
+      "image": "gallery/meeting-1.jpg",
+      "title": "Parliamentary Address",
+      "description": "Speaking on behalf of the people",
+      "featured": true
+    },
+    {
+      "category": "community",
+      "image": "gallery/community-1.jpg",
+      "title": "Village Development Meeting",
+      "description": "Direct interaction with farmers"
+    },
+    {
+      "category": "initiatives",
+      "image": "gallery/initiative-2.jpg",
+      "title": "Women's Skills Training",
+      "description": "Empowering through skill development"
+    },
+    {
+      "category": "events",
+      "image": "gallery/event-2.jpg",
+      "title": "Independence Day Celebration",
+      "description": "Honoring our nation's freedom"
+    }
+  ],
+  "video_section": {
+    "title": "Recent Speeches & Interviews",
+    "videos": [
+      {
+        "title": "Education Reform Speech",
+        "thumbnail": "video-thumb-1.jpg",
+        "duration": "15:30"
+      },
+      {
+        "title": "National TV Interview",
+        "thumbnail": "video-thumb-2.jpg",
+        "duration": "28:45"
+      }
+    ]
+  }
+}

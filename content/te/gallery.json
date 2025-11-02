@@ -1,0 +1,65 @@
+{
+  "section_category": "ఫోటో గ్యాలరీ",
+  "section_title": "ముఖ్యమైన క్షణాలు",
+  "filters": [
+    {"id": "all", "label": "అన్ని"},
+    {"id": "events", "label": "కార్యక్రమాలు"},
+    {"id": "initiatives", "label": "కార్యక్రమాలు"},
+    {"id": "meetings", "label": "సమావేశాలు"},
+    {"id": "community", "label": "సమాజం"}
+  ],
+  "gallery_items": [
+    {
+      "category": "events",
+      "image": "gallery/event-1.jpg",
+      "title": "విద్య కోసం కమ్యూనిటీ ర్యాలీ",
+      "description": "విద్యా సంస్కరణకు మద్దతుగా వేలాది మంది సమావేశం"
+    },
+    {
+      "category": "initiatives",
+      "image": "gallery/initiative-1.jpg",
+      "title": "మొబైల్ ఆరోగ్య క్లినిక్ ప్రారంభం",
+      "description": "గ్రామీణ సమాజాలకు ఆరోగ్య సేవలను అందించడం"
+    },
+    {
+      "category": "meetings",
+      "image": "gallery/meeting-1.jpg",
+      "title": "పార్లమెంట్ ప్రసంగం",
+      "description": "ప్రజల తరఫున మాట్లాడుతూ",
+      "featured": true
+    },
+    {
+      "category": "community",
+      "image": "gallery/community-1.jpg",
+      "title": "గ్రామ అభివృద్ధి సమావేశం",
+      "description": "రైతులతో ప్రత్యక్ష సంభాషణ"
+    },
+    {
+      "category": "initiatives",
+      "image": "gallery/initiative-2.jpg",
+      "title": "మహిళల నైపుణ్య శిక్షణ",
+      "description": "నైపుణ్య అభివృద్ధి ద్వారా సాధికారత"
+    },
+    {
+      "category": "events",
+      "image": "gallery/event-2.jpg",
+      "title": "స్వాతంత్ర్య దినోత్సవం",
+      "description": "మన దేశ స్వాతంత్ర్యాన్ని గౌరవిస్తూ"
+    }
+  ],
+  "video_section": {
+    "title": "ఇటీవలి ప్రసంగాలు & ఇంటర్వ్యూలు",
+    "videos": [
+      {
+        "title": "విద్యా సంస్కరణ ప్రసంగం",
+        "thumbnail": "video-thumb-1.jpg",
+        "duration": "15:30"
+      },
+      {
+        "title": "జాతీయ టీవీ ఇంటర్వ్యూ",
+        "thumbnail": "video-thumb-2.jpg",
+        "duration": "28:45"
+      }
+    ]
+  }
+}

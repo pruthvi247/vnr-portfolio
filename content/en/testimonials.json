@@ -1,0 +1,30 @@
+{
+  "section_category": "PUBLIC VOICES",
+  "section_title": "What People Say",
+  "testimonials": [
+    {
+      "text": "The mobile health clinic brought hope to our village. My mother received treatment that saved her life. This leader truly cares for the people.",
+      "author": {
+        "name": "Ramesh Kumar",
+        "title": "Farmer, Karimnagar",
+        "image": "testimonial-1.jpg"
+      }
+    },
+    {
+      "text": "Through the women's entrepreneurship program, I started my own tailoring business. Now I can support my family and employ other women too.",
+      "author": {
+        "name": "Lakshmi Devi",
+        "title": "Entrepreneur, Warangal",
+        "image": "testimonial-2.jpg"
+      }
+    },
+    {
+      "text": "The digital literacy program changed my life. At 65, I learned to use online banking and government services. Age is no barrier to learning!",
+      "author": {
+        "name": "Venkata Rao",
+        "title": "Retired Teacher, Nizamabad",
+        "image": "testimonial-3.jpg"
+      }
+    }
+  ]
+}

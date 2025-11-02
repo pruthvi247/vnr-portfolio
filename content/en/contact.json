@@ -1,0 +1,74 @@
+{
+  "section_category": "GET IN TOUCH",
+  "section_title": "Your Voice Matters",
+  "intro": {
+    "title": "Connect With Us",
+    "description": "We believe in accessible governance. Reach out to us through multiple channels for any concerns, suggestions, or collaboration opportunities."
+  },
+  "contact_methods": [
+    {
+      "icon": "fas fa-map-marker-alt",
+      "title": "Main Office",
+      "details": "Parliament House, New Delhi - 110001"
+    },
+    {
+      "icon": "fas fa-building",
+      "title": "Constituency Office",
+      "details": "MLA Quarters, Hyderabad - 500001"
+    },
+    {
+      "icon": "fas fa-phone",
+      "title": "Phone",
+      "details": "+91-11-2301-XXXX (Office)\n+91-98765-43210 (Public Helpline)"
+    },
+    {
+      "icon": "fas fa-envelope",
+      "title": "Email",
+      "details": "contact@leaderportfolio.in\npublic.grievances@leaderportfolio.in"
+    }
+  ],
+  "office_hours": {
+    "title": "Office Hours",
+    "schedule": [
+      {"days": "Mon-Fri:", "time": "9:00 AM - 6:00 PM"},
+      {"days": "Saturday:", "time": "10:00 AM - 2:00 PM (Public Meeting)"},
+      {"days": "Sunday:", "time": "Field Visits"}
+    ]
+  },
+  "contact_form": {
+    "title": "Send a Message",
+    "fields": {
+      "first_name": "First Name *",
+      "last_name": "Last Name *",
+      "email": "Email *",
+      "phone": "Phone",
+      "subject": "Subject *",
+      "message": "Message *"
+    },
+    "subject_options": [
+      {"value": "", "label": "Select a topic"},
+      {"value": "general", "label": "General Inquiry"},
+      {"value": "grievance", "label": "Public Grievance"},
+      {"value": "suggestion", "label": "Policy Suggestion"},
+      {"value": "collaboration", "label": "Collaboration"},
+      {"value": "media", "label": "Media Inquiry"}
+    ],
+    "submit_button": "Send Message"
+  },
+  "social_media": {
+    "title": "Follow Our Journey",
+    "platforms": [
+      {"name": "Facebook", "followers": "500K+ Followers", "icon": "fab fa-facebook-f"},
+      {"name": "Twitter", "followers": "250K+ Followers", "icon": "fab fa-twitter"},
+      {"name": "Instagram", "followers": "300K+ Followers", "icon": "fab fa-instagram"},
+      {"name": "YouTube", "followers": "150K+ Subscribers", "icon": "fab fa-youtube"},
+      {"name": "WhatsApp", "followers": "Quick Updates", "icon": "fab fa-whatsapp"}
+    ]
+  },
+  "newsletter": {
+    "title": "Stay Informed",
+    "description": "Get the latest updates on policies, initiatives, and community events directly in your inbox.",
+    "placeholder": "Enter your email address",
+    "button": "Subscribe"
+  }
+}
