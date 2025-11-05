@@ -1,13 +1,13 @@
-# Indian Political Portfolio Website
+# Andhrapradesh-India Political Portfolio Website
 
-A visually impressive, mobile-first personal portfolio website for a modern Indian politician, designed with a newspaper theme that blends cultural heritage and optimism.
+A visually impressive, mobile-first personal portfolio website for a modern Andhrapradesh state in india politician, designed with a newspaper theme that blends cultural heritage and optimism.
 
 ## 🌟 Features
 
 - **Newspaper-Themed Design**: Creative front-page layout with authentic newspaper styling
 - **Bilingual Support**: Complete English/Telugu language switching
 - **Mobile-First**: Fully responsive design optimized for all devices
-- **Indian Cultural Elements**: Tricolor accents, traditional typography, and cultural sensitivity
+- **Andhrapradesh state Cultural Elements**: Tricolor accents, traditional typography, and cultural sensitivity
 - **Accessibility**: WCAG compliant with proper ARIA labels and keyboard navigation
 - **SEO Optimized**: Meta tags, Open Graph, and structured data
 - **Interactive Elements**: Smooth animations, carousels, and form validation
@@ -131,7 +131,7 @@ The website requires several images to be fully functional. Create or add the fo
 - Ensure faces are clearly visible and well-lit
 - Maintain consistent aspect ratios as specified
 - Optimize images for web (compress without losing quality)
-- Use authentic photos that represent Indian political context
+- Use authentic photos that represent Indian and Andhrapradesh political context
 
 ## 🌐 Customization
 
@@ -176,9 +176,9 @@ Extend functionality in `js/main.js`:
 - Breaking news ticker and category headers
 - Print-inspired color scheme and borders
 
-### Indian Cultural Elements
+### Party/Andhra Cultural Elements
 
-- Tricolor (Saffron, White, Green) color accents
+- Tricolor (#0266B4,#FFFFFF, #008E46 ) color accents
 - Traditional typography with modern readability
 - Cultural sensitivity in imagery and content
 - Regional language support (Telugu)
