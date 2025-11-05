@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize AOS animations when sections change
     initializeAnimations();
+    
+    // Initialize overview button functionality
+    initializeOverviewButton();
+    // Initialize main navigation for profile page
+    initializeMainNavigation();
 });
 
 function initializeSidebarNavigation() {
@@ -48,24 +53,49 @@ function initializeSidebarNavigation() {
             activeLink.classList.add('active');
         }
         
-        // Show the target section
-        const targetSection = document.getElementById(targetSectionId);
-        if (targetSection) {
-            targetSection.style.display = 'block';
-            targetSection.classList.add('active');
-            
-            // Scroll to top of the section
-            targetSection.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-            
-            // Re-initialize AOS animations for the new section
-            if (typeof AOS !== 'undefined') {
-                setTimeout(() => {
-                    AOS.refresh();
-                }, 100);
+        // Special handling for profile-overview - scroll to top of page
+        if (targetSectionId === 'profile-overview') {
+            // Show the overview message section
+            const targetSection = document.getElementById(targetSectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                targetSection.classList.add('active');
             }
+            
+            // Scroll to the top of the profile page (breadcrumb area)
+            const breadcrumbContainer = document.querySelector('.breadcrumb-container') || document.querySelector('.detailed-profile-section');
+            if (breadcrumbContainer) {
+                breadcrumbContainer.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } else {
+                // Fallback - scroll to top of page
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        } else {
+            // Show the target section for other sections
+            const targetSection = document.getElementById(targetSectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                targetSection.classList.add('active');
+                
+                // Scroll to top of the section
+                targetSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+        // Re-initialize AOS animations for the new section
+        if (typeof AOS !== 'undefined') {
+            setTimeout(() => {
+                AOS.refresh();
+            }, 100);
         }
     }
     
@@ -287,6 +317,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize profile image carousel
     initializeProfileCarousel();
+    
+    // Initialize overview button
+    initializeOverviewButton();
 });
 
 // Profile Image Carousel Functionality
@@ -466,4 +499,68 @@ function initializeProfileCarousel() {
         pauseAutoplay,
         getCurrentSlide: () => currentSlide
     };
+}
+
+// Initialize Overview Button Functionality
+function initializeOverviewButton() {
+    const overviewButton = document.querySelector('.overview-scroll-btn');
+    
+    if (overviewButton) {
+        overviewButton.addEventListener('click', function() {
+            // Scroll to the top of the profile page (breadcrumb area)
+            const breadcrumbContainer = document.querySelector('.breadcrumb-container') || document.querySelector('.detailed-profile-section');
+            if (breadcrumbContainer) {
+                breadcrumbContainer.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } else {
+                // Fallback - scroll to top of page
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+}
+// Initialize Main Navigation for Profile Page
+function initializeMainNavigation() {
+    const mainNavLinks = document.querySelectorAll('.main-nav .nav-menu a');
+    
+    mainNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Handle sections that exist on this page
+            if (href.startsWith('#') && !href.includes('index.html')) {
+                e.preventDefault();
+                
+                const sectionId = href.substring(1);
+                
+                // Special handling for profile link
+                if (sectionId === "profile") {
+                    sectionId = "profile-overview";
+                }
+                const targetSection = document.getElementById(sectionId);
+                
+                if (targetSection) {
+                    // Switch to the section using sidebar navigation
+                    if (typeof window.switchToSection === 'function') {
+                        window.switchToSection(sectionId);
+                    }
+                    
+                    // Update URL hash
+                    window.history.pushState(null, null, href);
+                    
+                    // Update active nav item
+                    mainNavLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            }
+            // For external links (like index.html#hero), let them work normally
+        });
+    });
 }
