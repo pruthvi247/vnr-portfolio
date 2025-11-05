@@ -47,6 +47,9 @@ function initializeApp() {
     setupGalleryFilters();
     setupTestimonialsCarousel();
     
+    // Initialize news loader
+    initializeNewsLoader();
+    
     // Set initial language
     setLanguage(CONFIG.currentLanguage);
     
@@ -99,6 +102,11 @@ function setLanguage(lang) {
     
     // Update HTML lang attribute
     document.documentElement.lang = lang === 'te' ? 'te-IN' : 'en-IN';
+    
+    // Update news content if newsLoader is available
+    if (typeof window.newsLoader !== 'undefined') {
+        window.newsLoader.setLanguage(lang);
+    }
     
     // Trigger custom event for other components
     document.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
@@ -860,6 +868,44 @@ document.addEventListener('DOMContentLoaded', function() {
     animateProgressCircles();
     setupVideoInteractions();
 });
+
+// =============================================================================
+// NEWS LOADER INTEGRATION
+// =============================================================================
+
+/**
+ * Initialize news loader and integrate with homepage
+ */
+function initializeNewsLoader() {
+    // Wait for DOM to be ready and then initialize
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNewsContent();
+        });
+    } else {
+        loadNewsContent();
+    }
+}
+
+function loadNewsContent() {
+    // Check if newsLoader is available
+    if (typeof window.newsLoader !== 'undefined') {
+        // Load news data and update homepage
+        window.newsLoader.updateHomePage().then(() => {
+            console.log('News content loaded successfully');
+        }).catch(error => {
+            console.error('Error loading news content:', error);
+        });
+    } else {
+        console.warn('News loader not available');
+        // Retry after a short delay
+        setTimeout(() => {
+            if (typeof window.newsLoader !== 'undefined') {
+                window.newsLoader.updateHomePage();
+            }
+        }, 1000);
+    }
+}
 
 // =============================================================================
 // EXPORT FOR TESTING (if needed)

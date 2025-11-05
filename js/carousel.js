@@ -40,26 +40,60 @@ class SideStoriesCarousel {
     
     async init() {
         try {
-            await this.loadStories();
-            console.log(`Side Stories Carousel: Loaded ${this.stories.length} stories`);
+            // Listen for news data ready event
+            document.addEventListener('newsDataReady', (e) => {
+                this.loadStoriesFromNewsLoader(e.detail.newsLoader);
+            });
             
-            if (this.stories.length === 0) {
-                console.error('No stories loaded, showing error state');
-                this.showErrorState();
-                return;
+            // Listen for side stories ready event
+            document.addEventListener('sideStoriesReady', (e) => {
+                this.stories = e.detail.stories;
+                this.initializeAfterLoad();
+            });
+            
+            // Try immediate loading if newsLoader is already available
+            if (typeof window.newsLoader !== 'undefined' && window.newsLoader.newsData) {
+                this.loadStoriesFromNewsLoader(window.newsLoader);
+            } else if (typeof window.newsLoader !== 'undefined') {
+                // Wait for news data to be loaded
+                await window.newsLoader.loadNewsData();
+                this.loadStoriesFromNewsLoader(window.newsLoader);
+            } else {
+                // Fallback to original loading method if newsLoader is not available
+                await this.loadStories();
+                this.initializeAfterLoad();
             }
             
-            this.setupEventListeners();
-            this.createDots();
-            this.updateCarousel();
-            this.startAutoPlay();
-            
-            console.log('Carousel initialization complete');
-            
         } catch (error) {
-            console.error('Failed to initialize carousel:', error);
+            console.error('Error initializing carousel:', error);
             this.showErrorState();
         }
+    }
+    
+    loadStoriesFromNewsLoader(newsLoader) {
+        this.stories = newsLoader.getSideStories(5);
+        console.log(`Side Stories Carousel: Loaded ${this.stories.length} stories from newsLoader`);
+        
+        if (this.stories.length === 0) {
+            console.error('No stories loaded from newsLoader, showing error state');
+            this.showErrorState();
+            return;
+        }
+        
+        this.initializeAfterLoad();
+    }
+    
+    initializeAfterLoad() {
+        console.log(`Side Stories Carousel: Loaded ${this.stories.length} stories`);
+        
+        this.renderStories();
+        this.createDots();
+        this.setupEventListeners();
+        this.setupTouchEvents();
+        this.updateCarousel();
+        this.startAutoPlay();
+        
+        console.log('Carousel initialization complete');
     }
     
     async loadStories() {
@@ -214,12 +248,14 @@ class SideStoriesCarousel {
     }
     
     updateCarousel() {
-        if (!this.carousel) return;
+        if (!this.carousel || this.stories.length === 0) return;
         
-        // Always render stories to ensure content is displayed
-        this.renderStories();
+        // Ensure stories are rendered first
+        if (this.carousel.children.length === 0) {
+            this.renderStories();
+        }
         
-        // Update carousel position
+        // Update carousel position for horizontal scrolling
         const translateX = -this.currentIndex * 100;
         this.carousel.style.transform = `translateX(${translateX}%)`;
         
@@ -228,6 +264,12 @@ class SideStoriesCarousel {
         
         // Update button states
         this.updateButtonStates();
+        
+        // Update current story highlight
+        const storyCards = this.carousel.querySelectorAll('.story-card');
+        storyCards.forEach((card, index) => {
+            card.classList.toggle('current-story', index === this.currentIndex);
+        });
     }
     
     renderStories() {
@@ -250,24 +292,29 @@ class SideStoriesCarousel {
     
     createStoryCard(story, index) {
         const card = document.createElement('div');
-        card.className = `story-card ${story.featured ? 'featured' : ''}`;
+        card.className = `story-card ${story.category === 'exclusive_story' ? 'featured' : ''}`;
         card.setAttribute('data-story-id', story.id);
         
-        // Format date for display
-        const displayDate = this.formatDate(story.date);
+        // Get story content based on current language
+        const currentLang = localStorage.getItem('preferred-language') || 'en';
+        const title = window.newsLoader ? window.newsLoader.getStoryTitle(story) : (story.title || story.headline);
+        const summary = window.newsLoader ? window.newsLoader.getStorySummary(story) : (story.summary || '');
         
-        // Generate placeholder image based on category
-        const imageUrl = this.generatePlaceholderImage(story.category, index);
+        // Format date for display
+        const displayDate = this.formatDate(story.publishDate || story.date);
+        
+        // Use featured image or generate placeholder
+        const imageUrl = story.featuredImageUrl || this.generatePlaceholderImage(story.category, index);
         
         card.innerHTML = `
             <div class="story-image-small">
-                <img src="${imageUrl}" alt="${this.escapeHtml(story.headline)}" loading="lazy" 
+                <img src="${imageUrl}" alt="${this.escapeHtml(title)}" loading="lazy" 
                      onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMwMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTgwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNTAgOTBMMTI1IDY1SDE3NUwxNTAgOTBaIiBmaWxsPSIjOTM5RkJBIi8+CjxjaXJjbGUgY3g9IjEzMCIgY3k9IjcwIiByPSI1IiBmaWxsPSIjOTM5RkJBIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5MzlGQkEiPk5ld3MgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo='">
             </div>
-            <h3>${this.escapeHtml(story.headline)}</h3>
-            <p>${this.escapeHtml(story.summary)}</p>
+            <h3>${this.escapeHtml(title)}</h3>
+            <p>${this.escapeHtml(summary)}</p>
             <div class="story-meta">
-                <span class="story-category">${this.escapeHtml(story.category)}</span>
+                <span class="story-category">${this.escapeHtml(story.category.replace('_', ' ').toUpperCase())}</span>
                 <span class="story-date">${displayDate}</span>
             </div>
         `;
