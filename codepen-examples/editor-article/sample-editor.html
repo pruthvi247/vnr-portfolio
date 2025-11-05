@@ -1,0 +1,161 @@
+<header>
+  <h1>The Gazette</h1>
+  <div>1<sup>st</sup> september 1987</div>
+</header>
+
+<main>  
+  <section>
+    <h1>Lorem ipsum dolor sit amet</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ante urna, rhoncus vel elementum vitae, vestibulum sit amet justo. Cras sed lectus aliquet, venenatis massa et, ultrices velit. Nulla congue dolor id elementum sollicitudin. Integer eget pretium ligula. Proin eu mauris nec urna efficitur tristique eu vel metus. Fusce accumsan vulputate tellus id gravida. Aliquam non lectus vitae mi dignissim sagittis. Aliquam et massa est. Phasellus tincidunt, orci vitae cursus ornare, velit purus pharetra ipsum, ut ornare ipsum odio laoreet ipsum. Vestibulum quis sapien nec libero viverra porttitor vitae id ex.</p><p>Pellentesque sapien nulla, aliquam nec nisl eget, lobortis luctus sapien. Phasellus faucibus purus nisl. Nunc feugiat, diam eget consequat commodo, mi mi volutpat tellus, vel pretium sapien mauris ac lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam et maximus libero, vel placerat augue. Nulla sit amet neque elit. Integer eget laoreet turpis, et porta nulla. Ut pretium varius congue. Fusce pulvinar pulvinar purus, et convallis nisl ullamcorper ut. Donec sem nulla, auctor nec mi ac, interdum molestie orci. Vestibulum tempor mi vitae leo euismod, vitae luctus purus posuere. Donec eu ullamcorper sem.</p>
+    <img src="https://images.unsplash.com/photo-1504255632554-dda6225e10b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=925&q=80" />
+    <p>Integer vel pellentesque eros, facilisis malesuada nulla. Vestibulum scelerisque, sem eget aliquet commodo, ligula urna pharetra elit, eu suscipit ipsum massa ut nibh. Nunc molestie vehicula augue a mattis. Morbi vitae erat at neque facilisis tincidunt vel id augue. Vivamus eget ornare neque. Nam leo tortor, scelerisque sagittis faucibus et, congue sed turpis. Donec placerat lectus vel aliquam lacinia. Praesent elit magna, laoreet nec accumsan eu, ullamcorper eu nisi. Sed vitae neque ultricies, faucibus risus at, rutrum urna. Sed vitae tellus luctus, suscipit justo vitae, interdum tellus.</p>
+    <p>Aliquam nec luctus urna. Etiam quis nulla id ex luctus iaculis vel et nulla. Morbi vel efficitur risus. Nullam euismod sollicitudin dui in condimentum. Aenean scelerisque nunc id sollicitudin interdum. Cras odio risus, vehicula et leo sed, lobortis feugiat tortor. Praesent porta non ligula sollicitudin rhoncus. In euismod, sapien in ullamcorper hendrerit, quam nisi ultricies libero, vel semper eros massa ut ligula. Aenean ligula erat, cursus in elit at, dignissim luctus ligula.</p>
+  </section>
+</main>
+
+<footer>
+  Made with <span class="icon-heart">&hearts;</span> by Katrien
+</footer>
+
+body {
+  font-family: 'PT Serif', serif;
+  background-color: #ededed;
+  color: #161716;
+  margin: 0 20px;
+}
+
+header {
+  h1 {
+    grid-area: area2;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+  }
+  div {
+    grid-area: area3;
+    font-size: 1rem;
+    text-align: right;
+    padding-bottom: 0.5rem;
+    font-style: oblique;
+    text-align: center;
+  }
+  border-bottom: 5px solid #161716;
+}
+
+main {
+  section {
+    margin: 5vh 0;
+    /*column-rule: 1px solid #161716;*/
+    column-count: 1;
+    column-gap: 40px;
+    column-fill: auto;
+    h1 {
+      margin: 0 0 -0.75rem 0 ;
+      text-decoration: underline;
+    }
+    img {
+      display: block;
+      width: calc(100vw - 40px);
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
+      
+    }
+    p::first-letter { 
+      font-size: 2rem;
+      letter-spacing: 0.1rem;
+    }
+    p {
+      text-align: justify;
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  border-top: 1px solid #161716;
+  line-height: 1.2rem;
+  .icon-heart {
+    font-size: 1.2rem;
+    color: red;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  main {
+    section {
+      column-count: 2;
+      img {
+        width: calc(50vw - 40px);
+      }
+    }
+  }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  main {
+    section {  
+      column-count: 3;
+      min-height: 500px;
+      height: calc(100vh - 12.5rem);
+      img {
+        width: calc(33.33vw - 40px);
+      }
+    }
+  }
+} 
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+   header {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-areas: "area1 area2 area3";
+    align-items: end;
+    h1 {
+      grid-area: area2;
+      font-size: 3.5rem;
+    }
+    div {
+      grid-area: area3;
+      text-align: right;
+      padding-right: 15px;
+    }
+  }
+} 
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    main {
+      section {
+        column-count: 4;
+        min-height: 600px;
+        height: calc(100vh - 13.5rem);
+        img {
+          width: calc(25vw - 40px);
+        }
+      }
+    }
+}
+
+@media print{
+  @page {
+    size: landscape;
+  }
+  main section {
+    column-count: 4;
+    min-height: 150mm;
+    height: 150mm;
+    column-fill: auto;
+  }
+  main section img {
+    width: 75mm;
+  }
+
+  footer {
+    display: none;
+  }
+}

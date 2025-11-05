@@ -52,7 +52,12 @@ class SideStoriesCarousel {
             this.setupEventListeners();
             this.createDots();
             this.updateCarousel();
-            this.startAutoPlay();
+            
+            // Start auto-play after a short delay to ensure everything is set up
+            setTimeout(() => {
+                this.isVisible = true;
+                this.startAutoPlay();
+            }, 1000);
             
             console.log('Carousel initialization complete');
             
@@ -148,8 +153,15 @@ class SideStoriesCarousel {
         // Pause auto-play on hover
         if (this.carousel) {
             this.carousel.addEventListener('mouseenter', () => this.pauseAutoPlay());
-            this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+            this.carousel.addEventListener('mouseleave', () => {
+                if (this.isVisible !== false) {
+                    this.startAutoPlay();
+                }
+            });
         }
+        
+        // Set up intersection observer to pause when not visible
+        this.setupVisibilityObserver();
         
         // Touch/swipe support for mobile
         this.setupTouchEvents();
@@ -219,9 +231,8 @@ class SideStoriesCarousel {
         // Always render stories to ensure content is displayed
         this.renderStories();
         
-        // Update carousel position
-        const translateX = -this.currentIndex * 100;
-        this.carousel.style.transform = `translateX(${translateX}%)`;
+        // For vertical layout, show current story by hiding others
+        this.showCurrentStory();
         
         // Update dots
         this.updateDots();
@@ -246,6 +257,31 @@ class SideStoriesCarousel {
         });
         
         console.log(`Carousel now has ${this.carousel.children.length} children`);
+    }
+    
+    showCurrentStory() {
+        // For breaking news, show multiple stories but highlight current one
+        const storyCards = this.carousel.querySelectorAll('.story-card');
+        const maxVisible = 4; // Show 4 stories at a time
+        
+        storyCards.forEach((card, index) => {
+            // Calculate which stories should be visible
+            const startIndex = Math.max(0, Math.min(this.currentIndex, this.stories.length - maxVisible));
+            const endIndex = Math.min(startIndex + maxVisible, this.stories.length);
+            
+            if (index >= startIndex && index < endIndex) {
+                card.style.display = 'block';
+                // Highlight current story
+                if (index === this.currentIndex) {
+                    card.classList.add('current-story');
+                } else {
+                    card.classList.remove('current-story');
+                }
+            } else {
+                card.style.display = 'none';
+                card.classList.remove('current-story');
+            }
+        });
     }
     
     createStoryCard(story, index) {
@@ -358,15 +394,37 @@ class SideStoriesCarousel {
     nextStory() {
         if (this.currentIndex < this.stories.length - 1) {
             this.currentIndex++;
-            this.updateCarousel();
+            this.scrollToCurrentStory();
         }
     }
     
     prevStory() {
         if (this.currentIndex > 0) {
             this.currentIndex--;
-            this.updateCarousel();
+            this.scrollToCurrentStory();
         }
+    }
+    
+    scrollToCurrentStory() {
+        const storyCards = this.carousel.querySelectorAll('.story-card');
+        const carouselContainer = this.carousel.parentElement; // .stories-carousel-container
+        
+        if (storyCards[this.currentIndex] && carouselContainer) {
+            // Calculate scroll position within the container only
+            const cardTop = storyCards[this.currentIndex].offsetTop;
+            const containerHeight = carouselContainer.clientHeight;
+            const cardHeight = storyCards[this.currentIndex].offsetHeight;
+            
+            // Center the card in the container
+            const scrollTop = Math.max(0, cardTop - (containerHeight - cardHeight) / 2);
+            
+            carouselContainer.scrollTo({
+                top: scrollTop,
+                behavior: 'smooth'
+            });
+        }
+        this.updateDots();
+        this.updateButtonStates();
     }
     
     goToStory(index) {
@@ -377,15 +435,56 @@ class SideStoriesCarousel {
     }
     
     startAutoPlay() {
-        if (this.stories.length <= 1) return;
+        if (this.stories.length <= 1 || this.autoPlayInterval) return;
         
         this.autoPlayInterval = setInterval(() => {
             if (this.currentIndex < this.stories.length - 1) {
-                this.nextStory();
+                this.currentIndex++;
             } else {
-                this.goToStory(0); // Loop back to first story
+                this.currentIndex = 0; // Loop back to first story
             }
+            
+            // Update display and scroll within carousel container
+            this.showCurrentStory();
+            this.scrollToCurrentStory();
+            this.updateDots();
+            this.updateButtonStates();
         }, this.autoPlayDelay);
+    }
+    
+    isCarouselVisible() {
+        if (!this.carousel) return false;
+        
+        const rect = this.carousel.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        // Check if at least part of the carousel is visible
+        return rect.top < windowHeight && rect.bottom > 0;
+    }
+    
+    setupVisibilityObserver() {
+        if (!this.carousel || !window.IntersectionObserver) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Carousel is visible, start auto-play if not already running
+                    this.isVisible = true;
+                    if (!this.autoPlayInterval) {
+                        this.startAutoPlay();
+                    }
+                } else {
+                    // Carousel is not visible, pause auto-play
+                    this.isVisible = false;
+                    this.pauseAutoPlay();
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% visible
+        });
+        
+        observer.observe(this.carousel);
+        this.visibilityObserver = observer;
     }
     
     pauseAutoPlay() {
@@ -428,6 +527,9 @@ class SideStoriesCarousel {
     
     destroy() {
         this.pauseAutoPlay();
+        if (this.visibilityObserver) {
+            this.visibilityObserver.disconnect();
+        }
         // Remove event listeners if needed
     }
 }

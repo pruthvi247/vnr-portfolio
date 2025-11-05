@@ -1,0 +1,295 @@
+<div class="newspaper-container eighties-style" id="newspaper-app">
+  <header class="masthead">
+    <div class="logo">The Gateway Gazette</div>
+    <div class="date-issue">THURSDAY, OCTOBER 10, 1985 | VOL. III, NO. 273</div>
+  </header>
+
+  <nav class="main-nav">
+    <a href="#tech-news" target="_self">TECH NEWS</a>
+    <a href="#editorials" target="_self">EDITORIALS</a>
+    <a href="#community" target="_self">COMMUNITY</a>
+    <a href="#advertisements" target="_self">ADS & JOBS</a>
+  </nav>
+
+  <div class="top-section-grid">
+    <article class="feature-article">
+      <h1 class="headline" id="tech-news">IBM PC AT: A NEW ERA IN HOME COMPUTING?</h1>
+      <div class="byline">By Byte Reporter | Staff Writer</div>
+      <img src="https://picsum.photos/600/350?grayscale&blur=1" alt="Retro computer image" class="feature-img">
+      <p class="lead-text">The launch of the IBM Personal Computer AT has sent ripples through the burgeoning home computing market, promising unprecedented power for the serious enthusiast and business user alike...</p>
+      
+      <section class="multi-column-text">
+        <p>...Full article text about the IBM PC AT. With its cutting-edge 80286 processor and a whopping 512KB of RAM, the AT is poised to redefine what a personal computer can achieve. Early reports from industry analysts suggest this machine will be a workhorse for scientific applications and complex spreadsheets, moving beyond the simple games and word processing of its predecessors.</p>
+        <p>However, the hefty price tag may put it out of reach for the average consumer, leading some to question its mass market appeal. Only time will tell if the average American is ready for such computational might in their living room.</p>
+      </section>
+    </article>
+    
+    <aside class="sidebar">
+      <h2>Briefings</h2>
+      <div class="mini-story">
+        <h4><a href="#" target="_self">Local Arcade Sees Pac-Man Fever Return</a></h4>
+        <p>A recent tournament at "Pixel Palace" drew record crowds, signaling a resurgence in classic arcade game popularity.</p>
+      </div>
+      <div class="mini-story">
+        <h4><a href="#" target="_self">Dial-Up BULLETIN BOARDS: The Future of Online Chat?</a></h4>
+        <p>Local tech enthusiasts are connecting nightly over phone lines, sharing software and discussions on private digital hubs.</p>
+      </div>
+      <div class="ad" id="advertisements">
+        **JOB OPENING**<br>
+        <span class="ad-small-print">DATA ENTRY CLERK WANTED</span><br>
+        Typing skills a must. Apply in person.
+      </div>
+    </aside>
+  </div>
+
+  <section class="bottom-section-grid">
+    <article class="secondary-article-1">
+      <h3 id="editorials"><a href="#" target="_self">EDITORIAL: The Cassette vs. Floppy Debate Rages On</a></h3>
+      <p>Our editor weighs in on the superior storage medium for the modern computer user. Is magnetic tape truly obsolete?</p>
+    </article>
+    <article class="secondary-article-2">
+      <h3><a href="#" target="_self">NEW GAME REVIEW: 'The Oregon Trail' - Educational Fun?</a></h3>
+      <p>A look at the popular educational software that's teaching a generation about pioneer life and dysentery.</p>
+    </article>
+    <article class="secondary-article-3" id="community">
+        <h3><a href="#" target="_self">COMMUNITY CORNER: BASIC Programming Club Seeks Members</a></h3>
+        <p>Aspiring programmers meet weekly at the library to share code and debug programs on their Commodores and Apples.</p>
+    </article>
+  </section>
+
+  <footer class="footer">
+    &copy; 1985 The Gateway Gazette. All rights reserved. | <a href="#" target="_self">Classifieds</a> | <a href="#" target="_self">Contact</a>
+  </footer>
+</div>
+
+
+/* Font Imports (Add to CSS Settings or top of CSS panel) */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Teko:wght@700&family=Old+Standard+TT:wght@400;700&display=swap');
+
+:root {
+  --paper-bg: #e0e0e0;
+    /* --paper-bg: #f5edcb; /* Sepia-toned paper */
+  --ink-color: #3a3a3a; /* Darker, slightly muted ink */
+  --border-color: #3a3a3a;
+
+  /* 80s-inspired fonts */
+  --headline-font: 'Teko', sans-serif; /* Bold, blocky sans-serif for impact */
+  --sub-headline-font: 'Old Standard TT', serif; /* Classic serif for articles */
+  --body-font: 'Old Standard TT', serif;
+  --monospace-font: 'IBM Plex Mono', monospace; /* For code or technical ads */
+
+  --gutter: 20px;
+}
+
+body {
+  background-color: var(--paper-bg);
+  color: var(--ink-color);
+  font-family: var(--body-font);
+  line-height: 1.4; /* Tighter line height for print */
+  padding: 15px; /* Less padding, more content-dense */
+}
+
+.newspaper-container {
+  max-width: 1000px; /* Slightly narrower, typical for print */
+  margin: 0 auto;
+  border: 4px solid var(--border-color); /* Thicker outer border */
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.2); /* Slight offset shadow for retro feel */
+  padding: 10px;
+  background-color: white; /* Ensure content background is white */
+}
+
+/* Masthead */
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px 0;
+  border-bottom: 3px solid var(--border-color); /* Simple, thick line */
+  margin-bottom: 15px;
+}
+.logo {
+  font-family: var(--headline-font);
+  font-size: 4em; /* Very large, impactful logo */
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -2px; /* Tighter letter spacing */
+}
+.date-issue {
+  font-family: var(--monospace-font); /* Monospace for date */
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Main Navigation */
+.main-nav {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 0;
+  margin-bottom: var(--gutter);
+}
+.main-nav a {
+  font-family: var(--monospace-font); /* Monospace for nav links */
+  color: var(--ink-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  padding: 0 5px;
+  border-right: 1px solid #ccc; /* Vertical dividers between nav items */
+}
+.main-nav a:last-child {
+    border-right: none;
+}
+a { /* General link styling */
+    color: var(--ink-color);
+    text-decoration: underline; /* Standard 80s link look */
+    text-decoration-color: #888;
+}
+a:hover {
+    color: #cc0000; /* Red emphasis on hover */
+    text-decoration-color: #cc0000;
+}
+
+/* Top Section Grid (Feature + Sidebar) */
+.top-section-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr; /* Feature wider, sidebar narrower */
+  grid-gap: var(--gutter);
+  padding: 0 var(--gutter);
+  padding-bottom: var(--gutter); /* Padding at bottom of this section */
+  border-bottom: 1px solid var(--border-color); /* Divider below this grid */
+}
+
+.feature-article {
+  grid-column: 1 / span 1; /* Explicit span 1, as the grid defines columns */
+}
+.headline {
+  font-family: var(--headline-font);
+  font-size: 3em;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.byline {
+  font-family: var(--monospace-font);
+  font-style: normal; /* No italics for 80s */
+  font-size: 0.8em;
+  text-transform: uppercase;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.feature-img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--border-color); /* Chunky image border */
+  margin-bottom: 15px;
+}
+.lead-text {
+  font-weight: bold; /* Bold lead paragraph */
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+.multi-column-text {
+  columns: 2; 
+  column-gap: 25px;
+  column-rule: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  grid-column: 2 / 3;
+  border-left: 1px solid var(--border-color);
+  padding-left: var(--gutter);
+}
+.sidebar h2 {
+    font-family: var(--headline-font);
+    font-size: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+.mini-story {
+    margin-bottom: 15px;
+}
+.mini-story h4 {
+    font-family: var(--sub-headline-font);
+    font-size: 1.2em;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+.ad {
+    font-family: var(--monospace-font);
+    font-size: 0.9em;
+    background-color: #e0e0e0; /* Light gray background for ads */
+    border: 1px dashed var(--border-color);
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+.ad-small-print {
+    font-size: 0.7em;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Bottom Section Grid (Secondary Articles) */
+.bottom-section-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-gap: var(--gutter);
+  padding: var(--gutter);
+  padding-top: var(--gutter);
+}
+.bottom-section-grid article {
+    border-right: 1px solid #ccc;
+    padding-right: var(--gutter);
+}
+.bottom-section-grid article:last-child {
+    border-right: none; 
+}
+.bottom-section-grid h3 {
+    font-family: var(--sub-headline-font);
+    font-size: 1.5em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+.bottom-section-grid p {
+    font-size: 0.9em;
+}
+
+/* Footer */
+.footer {
+  border-top: 2px solid var(--border-color);
+  padding: 10px var(--gutter);
+  text-align: center;
+  font-family: var(--monospace-font);
+  font-size: 0.8em;
+  margin-top: var(--gutter);
+}
+
+// JavaScript for an 80s newspaper would be very minimal, if any.
+// We'll keep a simple event logger to simulate basic interaction.
+
+const newspaperContainer = document.getElementById('newspaper-app');
+
+// Simulate a "click analytics" log, common even in rudimentary systems.
+newspaperContainer.addEventListener('click', (event) => {
+    // Only log clicks on actual links or specific interactive elements
+    if (event.target.tagName === 'A' || event.target.closest('.mini-story')) {
+        console.log(`[80s INTERACTION LOG] User clicked on: "${event.target.textContent.trim()}" at ${new Date().toLocaleTimeString()}`);
+        // In a real 80s system, this might log to a server or a local file.
+    }
+});
+
+// A simple onload message for the console to indicate the "site" is ready.
+window.onload = function() {
+    console.log("THE GATEWAY GAZETTE - 1985 EDITION - LOADED");
+    console.log("Welcome, digital reader!");
+    console.log("-----------------------------------------");
+    console.log("Remember: Computer networks are for serious business and scholarly pursuits.");
+};
