@@ -20,11 +20,6 @@
     --off-white: #FEFEFE;
     --cream: #F9F9F9;
     
-    /* ========== OPTIONAL ACCENT COLOR ========== */
-    --accent-red: #dc3f34;
-    --accent-red-light: #e55a4f;
-    --accent-red-dark: #b8342a;
-    
     /* ========== NEWSPAPER THEME COLORS ========== */
     --newspaper-bg: #f9f9f9;
     --newsprint: #2c2c2c;
@@ -55,10 +50,6 @@
     /* White to Blue/Green */
     --gradient-white-blue: linear-gradient(135deg, #FFFFFF 0%, #0266B4 100%);
     --gradient-white-green: linear-gradient(135deg, #FFFFFF 0%, #008E46 100%);
-    
-    /* Optional Red Variations (Breaking News/Urgent Actions) */
-    --gradient-red: linear-gradient(135deg, #e55a4f 0%, #dc3f34 100%);
-    --gradient-red-dark: linear-gradient(135deg, #dc3f34 0%, #b8342a 100%);
     
     /* Neutral Gradients */
     --gradient-gray: linear-gradient(135deg, #6b7280 0%, #374151 100%);

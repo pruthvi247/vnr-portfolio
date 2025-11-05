@@ -178,7 +178,8 @@ Extend functionality in `js/main.js`:
 
 ### Party/Andhra Cultural Elements
 
-- Tricolor (#0266B4,#FFFFFF, #008E46 ) color accents
+- Tricolor (#0266B4,#FFFFFF, #008E46, optional : #dc3f34 ) color accents
+
 - Traditional typography with modern readability
 - Cultural sensitivity in imagery and content
 - Regional language support (Telugu)
