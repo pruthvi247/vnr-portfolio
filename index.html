@@ -383,6 +383,112 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
+        /* News Ticker Styles */
+        .news-ticker {
+            background: var(--vnr-logo-gradient);
+            color: white;
+            padding: 0.8rem 0;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .ticker-label {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-right: 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            width: calc(100% - 150px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ticker-scroll {
+            display: inline-block;
+            animation: continuous-scroll 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ticker-scroll span {
+            display: inline-block;
+            padding-right: 80px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        @keyframes continuous-scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            90% {
+                transform: translateX(-100%);
+            }
+            90.1% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .news-ticker:hover .ticker-scroll {
+            animation-play-state: paused;
+        }
+
+        /* Ticker responsive design */
+        @media (max-width: 768px) {
+            .ticker-label {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+                margin-right: 0.8rem;
+            }
+            
+            .ticker-content {
+                width: calc(100% - 120px);
+            }
+            
+            .ticker-scroll span {
+                font-size: 0.85rem;
+                padding-right: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ticker-label {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin-right: 0.6rem;
+            }
+            
+            .ticker-content {
+                width: calc(100% - 100px);
+            }
+            
+            .ticker-scroll {
+                animation: continuous-scroll 18s linear infinite;
+            }
+            
+            .ticker-scroll span {
+                font-size: 0.8rem;
+                padding-right: 60px;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .news-gallery-layout {
@@ -554,8 +660,20 @@
     <header class="newspaper-header">
         <div class="masthead">
             <div class="publication-info">
-                <div class="edition-info">
-                    <span data-en="Digital Edition" data-te="డిజిటల్ ఎడిషన్">Digital Edition</span>
+                <div class="news-ticker">
+                    <div class="ticker-label" data-en="BREAKING NEWS" data-te="ప్రధాన వార్తలు">BREAKING NEWS</div>
+                    <div class="ticker-content">
+                        <div class="ticker-scroll">
+                            <span data-en="Latest Update: Education Reform Bill passed with unanimous support • Healthcare Initiative reaches 100+ villages • Digital Literacy Program launches in rural areas • Infrastructure development projects approved • Youth Employment Scheme shows 85% success rate • Clean Water Initiative benefits 50,000+ families" 
+                                  data-te="తాజా నవీకరణ: విద్యా సంస్కరణ బిల్లు ఏకగ్రీవ మద్దతుతో ఆమోదం • ఆరోగ్య కార్యక్రమం 100+ గ్రామాలను చేరుకుంది • గ్రామీణ ప్రాంతాలలో డిజిటల్ అక్షరాస్యత కార్యక్రమం ప్రారంభం • మౌలిక సదుపాయాల అభివృద్ధి ప్రాజెక్టులు ఆమోదం • యువత ఉపాధి పథకం 85% విజయ రేటు • స్వచ్ఛ నీటి కార్యక్రమం 50,000+ కుటుంబాలకు ప్రయోజనం">
+                                Latest Update: Education Reform Bill passed with unanimous support • Healthcare Initiative reaches 100+ villages • Digital Literacy Program launches in rural areas • Infrastructure development projects approved • Youth Employment Scheme shows 85% success rate • Clean Water Initiative benefits 50,000+ families
+                            </span>
+                            <span data-en="Latest Update: Education Reform Bill passed with unanimous support • Healthcare Initiative reaches 100+ villages • Digital Literacy Program launches in rural areas • Infrastructure development projects approved • Youth Employment Scheme shows 85% success rate • Clean Water Initiative benefits 50,000+ families" 
+                                  data-te="తాజా నవీకరణ: విద్యా సంస్కరణ బిల్లు ఏకగ్రీవ మద్దతుతో ఆమోదం • ఆరోగ్య కార్యక్రమం 100+ గ్రామాలను చేరుకుంది • గ్రామీణ ప్రాంతాలలో డిజిటల్ అక్షరాస్యత కార్యక్రమం ప్రారంభం • మౌలిక సదుపాయాల అభివృద్ధి ప్రాజెక్టులు ఆమోదం • యువత ఉపాధి పథకం 85% విజయ రేటు • స్వచ్ఛ నీటి కార్యక్రమం 50,000+ కుటుంబాలకు ప్రయోజనం">
+                                Latest Update: Education Reform Bill passed with unanimous support • Healthcare Initiative reaches 100+ villages • Digital Literacy Program launches in rural areas • Infrastructure development projects approved • Youth Employment Scheme shows 85% success rate • Clean Water Initiative benefits 50,000+ families
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -600,10 +718,10 @@
     <!-- Main News Gallery Layout -->
     <main class="news-gallery-layout">
         <!-- News Content Header -->
-        <header class="news-masthead">
+        <!-- <header class="news-masthead">
             <h1 data-en="Latest News & Updates" data-te="తాజా వార్తలు & నవీకరణలు">Latest News & Updates</h1>
             <p class="tagline" data-en="Stay informed with the latest political developments" data-te="తాజా రాజకీయ పరిణామాలతో సమాచారంతో ఉండండి">Stay informed with the latest political developments</p>
-        </header>
+        </header> -->
 
         <!-- Main News Grid -->
         <section class="news-main-grid">
@@ -733,24 +851,7 @@
             </div>
         </section>
 
-        <!-- Navigation Links -->
-        <nav class="gallery-navigation">
-            <div style="display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; flex-wrap: wrap;">
-                <a href="index.html" class="read-more-btn">
-                    <i class="fas fa-home"></i>
-                    <span data-en="Back to Homepage" data-te="హోమ్‌పేజీకి తిరిగి">Back to Homepage</span>
-                </a>
-                <a href="profile.html" class="read-more-btn" style="background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));">
-                    <i class="fas fa-user"></i>
-                    <span data-en="View Profile" data-te="ప్రొఫైల్ చూడండి">View Profile</span>
-                </a>
-                <a href="#contact" class="read-more-btn" style="background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));">
-                    <i class="fas fa-envelope"></i>
-                    <span data-en="Contact Us" data-te="మమ్మల్ని సంప్రదించండి">Contact Us</span>
-                </a>
-            </div>
-        </nav>
-    </main>
+           </main>
 
     <!-- Footer with Contact Section -->
     <footer id="contact" class="newspaper-footer">
