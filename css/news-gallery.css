@@ -261,7 +261,7 @@ body {
 }
 
 .read-more-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: var(--vnr-logo-gradient);
     color: white;
     border: none;
     padding: 1rem 2rem;

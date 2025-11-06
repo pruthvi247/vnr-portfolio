@@ -78,7 +78,15 @@
         @media (min-width: 768px) {
             .news-main-grid {
                 grid-template-columns: 2fr 1fr;
+                align-items: stretch;
             }
+        }
+        
+        /* Featured Stories Container */
+        .featured-stories-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         /* Featured Story */
@@ -88,6 +96,8 @@
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .featured-story:hover {
@@ -97,7 +107,7 @@
 
         .featured-image {
             width: 100%;
-            height: 300px;
+            height: 200px;
             background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
             display: flex;
             align-items: center;
@@ -119,6 +129,9 @@
 
         .featured-content {
             padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .story-category {
@@ -155,6 +168,7 @@
             line-height: 1.6;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .story-meta {
@@ -163,6 +177,7 @@
             gap: 1rem;
             font-size: 0.9rem;
             color: var(--text-light);
+            margin-top: auto;
         }
 
         .story-date {
@@ -172,7 +187,7 @@
         }
 
         .read-more-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background: var(--vnr-logo-gradient);
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
@@ -184,6 +199,7 @@
             align-items: center;
             gap: 0.5rem;
             margin-top: 1rem;
+            align-self: flex-start;
         }
 
         .read-more-btn:hover {
@@ -196,6 +212,18 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            height: 100%;
+            justify-content: flex-start;
+        }
+        
+        .sidebar-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-section > div {
+            flex-grow: 1;
         }
 
         .sidebar-section h3 {
@@ -382,7 +410,31 @@
             border-radius: 8px;
         }
 
+        .loading-animation {
+            background: linear-gradient(90deg, 
+                var(--primary-color) 0%, 
+                var(--accent-color) 25%, 
+                var(--secondary-color) 50%, 
+                var(--accent-color) 75%, 
+                var(--primary-color) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
         @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        @keyframes shimmer {
             0% {
                 background-position: 200% 0;
             }
@@ -399,6 +451,89 @@
         .loading-image {
             height: 200px;
             margin-bottom: 1rem;
+        }
+
+        /* Enhanced Read More Button with VNR Gradient */
+        .read-more-btn {
+            background: var(--vnr-logo-gradient);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .read-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FF6B35, #F7931E, #FFD23F);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .read-more-btn:hover::before {
+            left: 0;
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Story content expansion */
+        .story-summary[data-expanded="true"] {
+            max-height: none;
+            overflow: visible;
+        }
+
+        .story-summary[data-truncated="true"] {
+            transition: all 0.3s ease;
+        }
+
+        /* Loading Dots Animation */
+        .loading-dots {
+            display: inline-flex;
+            gap: 0.2rem;
+        }
+
+        .loading-dots span {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: loadingDots 1.4s infinite both;
+        }
+
+        .loading-dots span:nth-child(1) { animation-delay: 0s; }
+        .loading-dots span:nth-child(2) { animation-delay: 0.16s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0.32s; }
+
+        @keyframes loadingDots {
+            0%, 80%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced spinner for headline */
+        .fa-spinner {
+            color: var(--accent-color);
         }
     </style>
     
@@ -472,32 +607,56 @@
 
         <!-- Main News Grid -->
         <section class="news-main-grid">
-            <!-- Featured Story -->
-            <article class="featured-story" id="featuredStory">
-                <div class="featured-image">
-                    <img src="https://images.unsplash.com/photo-1540910419892-4308791289af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
-                         alt="Featured News" id="featuredImage">
-                </div>
-                <div class="featured-content">
-                    <span class="story-category" id="featuredCategory" 
-                          data-en="EXCLUSIVE" data-te="ప్రత్యేక">EXCLUSIVE</span>
-                    <h2 class="story-headline" id="featuredHeadline" 
-                        data-en="Loading latest news..." data-te="తాజా వార్తలు లోడ్ అవుతున్నాయి...">Loading latest news...</h2>
-                    <p class="story-summary" id="featuredSummary" 
-                       data-en="Please wait while we fetch the latest updates..." 
-                       data-te="తాజా నవీకరణలను పొందుతున్నప్పుడు దయచేసి వేచి ఉండండి...">Please wait while we fetch the latest updates...</p>
-                    <div class="story-meta">
-                        <div class="story-date">
-                            <i class="fas fa-clock"></i>
-                            <span id="featuredDate"></span>
-                        </div>
+            <!-- Featured Stories Container -->
+            <div class="featured-stories-container">
+                <!-- Primary Featured Story -->
+                <article class="featured-story" id="featuredStory">
+                    <div class="featured-image">
+                        <img src="https://images.unsplash.com/photo-1540910419892-4308791289af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                             alt="Featured News" id="featuredImage">
                     </div>
-                    <button class="read-more-btn" id="featuredReadMore">
-                        <span data-en="Read Full Story" data-te="పూర్తి వార్త చదవండి">Read Full Story</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </article>
+                    <div class="featured-content">
+                        <span class="story-category" id="featuredCategory" 
+                              data-en="EXCLUSIVE" data-te="ప్రత్యేక">EXCLUSIVE</span>
+                        <h2 class="story-headline" id="featuredHeadline">Loading latest news...</h2>
+                        <p class="story-summary" id="featuredSummary">Please wait while we fetch the latest updates...</p>
+                        <div class="story-meta">
+                            <div class="story-date">
+                                <i class="fas fa-clock"></i>
+                                <span id="featuredDate"></span>
+                            </div>
+                        </div>
+                        <button class="read-more-btn" id="featuredReadMore">
+                            <span data-en="Read Full Story" data-te="పూర్తి వార్త చదవండి">Read Full Story</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Secondary Featured Story -->
+                <article class="featured-story" id="secondaryFeaturedStory">
+                    <div class="featured-image">
+                        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                             alt="Secondary Featured News" id="secondaryFeaturedImage">
+                    </div>
+                    <div class="featured-content">
+                        <span class="story-category" id="secondaryFeaturedCategory" 
+                              data-en="BREAKING" data-te="ప్రధాన వార్త">BREAKING</span>
+                        <h2 class="story-headline" id="secondaryFeaturedHeadline">Loading secondary news...</h2>
+                        <p class="story-summary" id="secondaryFeaturedSummary">Please wait while we fetch more updates...</p>
+                        <div class="story-meta">
+                            <div class="story-date">
+                                <i class="fas fa-clock"></i>
+                                <span id="secondaryFeaturedDate"></span>
+                            </div>
+                        </div>
+                        <button class="read-more-btn" id="secondaryFeaturedReadMore">
+                            <span data-en="Read More" data-te="మరింత చదవండి">Read More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </article>
+            </div>
 
             <!-- Sidebar News -->
             <aside class="sidebar-news">
@@ -593,28 +752,136 @@
         </nav>
     </main>
 
-    <!-- Contact Section (Simplified) -->
-    <section id="contact" class="contact-section" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; padding: 3rem 2rem; text-align: center;">
-        <div class="container" style="max-width: 800px; margin: 0 auto;">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;" 
-                data-en="Get in Touch" data-te="సంప్రదించండి">Get in Touch</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;" 
-               data-en="Have questions or want to share your story? We'd love to hear from you." 
-               data-te="ప్రశ్నలు ఉన్నాయా లేదా మీ కథను పంచుకోవాలనుకుంటున్నారా? మేము మీ నుండి వినాలని అనుకుంటున్నాము.">
-                Have questions or want to share your story? We'd love to hear from you.
-            </p>
-            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem;">
-                <a href="tel:+919876543210" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fas fa-phone"></i>
-                    <span>+91-98765-43210</span>
-                </a>
-                <a href="mailto:contact@vnroffice.in" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fas fa-envelope"></i>
-                    <span>contact@vnroffice.in</span>
-                </a>
+    <!-- Footer with Contact Section -->
+    <footer id="contact" class="newspaper-footer">
+        <div class="container">
+            <!-- Contact Information Section -->
+            <div class="footer-contact-section">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="Get in Touch" data-te="సంప్రదించండి" style="color: #ffffff; text-align: center; margin-bottom: 2rem; font-family: 'Playfair Display', serif; font-size: 2.5rem;">Get in Touch</h2>
+                    <p style="color: rgba(255, 255, 255, 0.9); text-align: center; font-size: 1.2rem; margin-bottom: 3rem;" 
+                       data-en="Have questions or want to share your story? We'd love to hear from you." 
+                       data-te="ప్రశ్నలు ఉన్నాయా లేదా మీ కథను పంచుకోవాలనుకుంటున్నారా? మేము మీ నుండి వినాలని అనుకుంటున్నాము.">
+                        Have questions or want to share your story? We'd love to hear from you.
+                    </p>
+                </div>
+                
+                <div class="footer-contact-grid">
+                    <div class="footer-contact-info">
+                        <h4 data-en="Office Address" data-te="కార్యాలయ చిరునామా" style="color: #ffffff; margin-bottom: 1rem;">Office Address</h4>
+                        <p style="color: rgba(255, 255, 255, 0.8);">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: #ffffff;"></i>
+                            <span data-en="Parliament House, New Delhi, India - 110001" 
+                                  data-te="పార్లమెంట్ హౌస్, న్యూ ఢిల్లీ, భారతదేశం - 110001">
+                                Parliament House, New Delhi, India - 110001
+                            </span>
+                        </p>
+                    </div>
+                    
+                    <div class="footer-contact-info">
+                        <h4 data-en="Contact Numbers" data-te="సంప్రదింపు నంబర్లు" style="color: #ffffff; margin-bottom: 1rem;">Contact Numbers</h4>
+                        <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 0.5rem;">
+                            <i class="fas fa-phone" style="margin-right: 0.5rem; color: #ffffff;"></i>
+                            <a href="tel:+919876543210" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">+91-98765-43210</a>
+                        </p>
+                        <p style="color: rgba(255, 255, 255, 0.8);">
+                            <i class="fas fa-envelope" style="margin-right: 0.5rem; color: #ffffff;"></i>
+                            <a href="mailto:contact@vnroffice.in" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">contact@vnroffice.in</a>
+                        </p>
+                    </div>
+                    
+                    <div class="footer-office-hours">
+                        <h4 data-en="Office Hours" data-te="కార్యాలయ సమయాలు" style="color: #ffffff; margin-bottom: 1rem;">Office Hours</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="color: rgba(255, 255, 255, 0.8); margin-bottom: 0.5rem;">
+                                <i class="fas fa-clock" style="margin-right: 0.5rem; color: #ffffff;"></i>
+                                <span data-en="Mon - Fri: 10:00 AM - 6:00 PM" data-te="సోమ - శుక్ర: ఉదయం 10:00 - సాయంత్రం 6:00">Mon - Fri: 10:00 AM - 6:00 PM</span>
+                            </li>
+                            <li style="color: rgba(255, 255, 255, 0.8);">
+                                <i class="fas fa-calendar-alt" style="margin-right: 0.5rem; color: #ffffff;"></i>
+                                <span data-en="Saturday: By Appointment" data-te="శనివారం: అపాయింట్‌మెంట్ ద్వారా">Saturday: By Appointment</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media Section -->
+            <div class="footer-social-section" style="margin-top: 3rem;">
+                <h3 data-en="Follow Our Journey" data-te="మా ప్రయాణాన్ని అనుసరించండి">Follow Our Journey</h3>
+                <div class="footer-social-grid">
+                    <a href="#" class="footer-social-card facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                        <div class="footer-social-info">
+                            <h4>Facebook</h4>
+                            <p>500K+ <span data-en="Followers" data-te="అనుచరులు">Followers</span></p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="footer-social-card twitter" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                        <div class="footer-social-info">
+                            <h4>Twitter</h4>
+                            <p>250K+ <span data-en="Followers" data-te="అనుచరులు">Followers</span></p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="footer-social-card instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <div class="footer-social-info">
+                            <h4>Instagram</h4>
+                            <p>300K+ <span data-en="Followers" data-te="అనుచరులు">Followers</span></p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="footer-social-card youtube" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                        <div class="footer-social-info">
+                            <h4>YouTube</h4>
+                            <p>100K+ <span data-en="Subscribers" data-te="సబ్‌స్క్రైబర్లు">Subscribers</span></p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://wa.me/+919876543210" class="footer-social-card whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="footer-social-info">
+                            <h4>WhatsApp</h4>
+                            <p><span data-en="Connect" data-te="అనుసంధానం">Connect</span></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Traditional Footer Content -->
+            <div class="footer-content" style="margin-top: 2rem;">
+                <div class="footer-section">
+                    <h4 data-en="Connect With Us" data-te="మాతో అనుసంధానం చేయండి">Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-te="త్వరిత లింకులు">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" data-en="News" data-te="వార్తలు">News</a></li>
+                        <li><a href="profile.html" data-en="Profile" data-te="వ్యక్తిత్వం">Profile</a></li>
+                        <li><a href="profile.html#initiatives" data-en="Initiatives" data-te="కార్యక్రమాలు">Initiatives</a></li>
+                        <li><a href="#contact" data-en="Contact" data-te="సంప్రదింపులు">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="tricolor-line"></div>
+                <p>&copy; 2024 Hon. Leader Name. <span data-en="Designed with love for India" data-te="భారత దేశం కోసం ప్రేమతో రూపొందించబడింది">Designed with love for India</span> 🇮🇳</p>
             </div>
         </div>
-    </section>
+    </footer>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -625,7 +892,69 @@
             constructor() {
                 this.newsLoader = new NewsLoader();
                 this.currentLang = localStorage.getItem('preferred-language') || 'en';
+                // Set the language in newsLoader immediately
+                this.newsLoader.currentLang = this.currentLang;
+                
+                // Demo placeholder images for news gallery
+                this.placeholderImages = {
+                    education: [
+                        'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Students in classroom
+                        'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Education technology
+                        'https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'  // School building
+                    ],
+                    politics: [
+                        'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Government building
+                        'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Democracy/voting
+                        'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'  // Political meeting
+                    ],
+                    youth: [
+                        'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Young professionals
+                        'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Team collaboration
+                        'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'  // Youth leadership
+                    ],
+                    community: [
+                        'https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Community gathering
+                        'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Healthcare/service
+                        'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'  // Rural development
+                    ],
+                    technology: [
+                        'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Digital transformation
+                        'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Technology innovation
+                        'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'  // Digital India
+                    ],
+                    infrastructure: [
+                        'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Modern buildings
+                        'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Urban development
+                        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'  // Transportation
+                    ]
+                };
+                
                 this.init();
+            }
+
+            // Get appropriate placeholder image based on story content
+            getPlaceholderImage(story, index = 0) {
+                if (!story) return this.placeholderImages.politics[0];
+                
+                const storyId = story.id;
+                const title = (story.title || '').toLowerCase();
+                const summary = (story.summary || '').toLowerCase();
+                const content = title + ' ' + summary;
+                
+                // Determine category based on story ID and content
+                if (storyId === '3' || content.includes('education') || content.includes('school') || content.includes('learning')) {
+                    return this.placeholderImages.education[index % this.placeholderImages.education.length];
+                } else if (storyId === '1' || content.includes('youth') || content.includes('young') || content.includes('leader')) {
+                    return this.placeholderImages.youth[index % this.placeholderImages.youth.length];
+                } else if (content.includes('technology') || content.includes('digital') || content.includes('tech')) {
+                    return this.placeholderImages.technology[index % this.placeholderImages.technology.length];
+                } else if (content.includes('infrastructure') || content.includes('development') || content.includes('urban')) {
+                    return this.placeholderImages.infrastructure[index % this.placeholderImages.infrastructure.length];
+                } else if (content.includes('community') || content.includes('health') || content.includes('rural')) {
+                    return this.placeholderImages.community[index % this.placeholderImages.community.length];
+                } else {
+                    return this.placeholderImages.politics[index % this.placeholderImages.politics.length];
+                }
             }
 
             async init() {
@@ -704,16 +1033,26 @@
             async loadNewsContent() {
                 try {
                     console.log('Loading news content for gallery...');
+                    
                     await this.newsLoader.loadNewsData();
+                    console.log('News data loaded:', this.newsLoader.newsData);
                     
                     if (!this.newsLoader.newsData) {
+                        console.log('No news data found, showing error state');
                         this.showErrorState();
                         return;
                     }
 
-                    // Load different sections
+                    console.log('Found', this.newsLoader.newsData.length, 'news items');
+
+                    // Load different sections - Featured story will load Education Reforms (ID #3)
+                    console.log('Loading featured story...');
                     this.loadFeaturedStory();
+                    
+                    console.log('Loading sidebar stories...');
                     this.loadSidebarStories();
+                    
+                    console.log('Loading news grid...');
                     this.loadNewsGrid();
                     
                     console.log('News gallery content loaded successfully');
@@ -723,38 +1062,282 @@
                 }
             }
 
-            loadFeaturedStory() {
-                const exclusiveStory = this.newsLoader.getLatestExclusiveStory();
-                if (!exclusiveStory) return;
-
+            showLoadingState() {
                 const elements = {
                     headline: document.getElementById('featuredHeadline'),
                     summary: document.getElementById('featuredSummary'),
                     date: document.getElementById('featuredDate'),
-                    image: document.getElementById('featuredImage'),
-                    category: document.getElementById('featuredCategory')
+                    category: document.getElementById('featuredCategory'),
+                    readMore: document.getElementById('featuredReadMore')
                 };
 
                 if (elements.headline) {
-                    elements.headline.textContent = this.newsLoader.getStoryTitle(exclusiveStory);
+                    elements.headline.innerHTML = `
+                        <i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>
+                        ${this.currentLang === 'te' ? 'తాజా వార్తలు లోడ్ అవుతున్నాయి...' : 'Loading latest news...'}
+                    `;
+                    elements.headline.classList.add('loading-animation');
                 }
                 
                 if (elements.summary) {
-                    elements.summary.textContent = this.newsLoader.getStorySummary(exclusiveStory);
+                    elements.summary.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted);">
+                            <div class="loading-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            ${this.currentLang === 'te' ? 'దయచేసి వేచి ఉండండి...' : 'Please wait while we fetch the exclusive story...'}
+                        </div>
+                    `;
                 }
                 
                 if (elements.date) {
-                    elements.date.textContent = this.newsLoader.formatDate(exclusiveStory.publishDate);
-                }
-                
-                if (elements.image && exclusiveStory.featuredImageUrl) {
-                    elements.image.src = exclusiveStory.featuredImageUrl;
-                    elements.image.alt = this.newsLoader.getStoryTitle(exclusiveStory);
+                    elements.date.textContent = '';
                 }
 
                 if (elements.category) {
-                    elements.category.textContent = this.currentLang === 'te' ? 'ప్రత్యేక' : 'EXCLUSIVE';
+                    elements.category.innerHTML = `
+                        <i class="fas fa-clock" style="margin-right: 0.3rem;"></i>
+                        ${this.currentLang === 'te' ? 'లోడింగ్...' : 'LOADING...'}
+                    `;
                 }
+
+                // Hide read more button during loading
+                if (elements.readMore) {
+                    elements.readMore.style.display = 'none';
+                }
+            }
+
+            loadFeaturedStory() {
+                console.log('Loading featured stories...');
+                
+                // Load Education Reforms story (ID #3) as primary
+                const educationReformsStory = this.newsLoader.getStoryById('3');
+                if (educationReformsStory) {
+                    console.log('Displaying Education Reforms story as primary:', educationReformsStory.title);
+                    this.displayStory(educationReformsStory, 'primary');
+                } else {
+                    console.log('Education Reforms story not found, using fallback');
+                    const fallbackStory = this.newsLoader.getLatestExclusiveStory();
+                    if (fallbackStory) {
+                        this.displayStory(fallbackStory, 'primary');
+                    }
+                }
+
+                // Load second story (ID #1 - Youth Leading Future) as secondary
+                const youthStory = this.newsLoader.getStoryById('1');
+                if (youthStory) {
+                    console.log('Displaying Youth story as secondary:', youthStory.title);
+                    this.displayStory(youthStory, 'secondary');
+                } else {
+                    // Fallback to any other exclusive story
+                    const exclusiveStories = this.newsLoader.getStoriesByCategory('exclusive', 2);
+                    if (exclusiveStories.length > 1) {
+                        this.displayStory(exclusiveStories[1], 'secondary');
+                    }
+                }
+            }
+
+            displayStory(story, type = 'primary') {
+                console.log('displayStory called with:', story, 'type:', type);
+                
+                const prefix = type === 'secondary' ? 'secondaryFeatured' : 'featured';
+                const elements = {
+                    headline: document.getElementById(`${prefix}Headline`),
+                    summary: document.getElementById(`${prefix}Summary`),
+                    date: document.getElementById(`${prefix}Date`),
+                    image: document.getElementById(`${prefix}Image`),
+                    category: document.getElementById(`${prefix}Category`),
+                    readMore: document.getElementById(`${prefix}ReadMore`)
+                };
+
+                console.log('Found elements:', elements);
+
+                // Remove loading animation and update headline
+                if (elements.headline) {
+                    console.log('Updating headline...');
+                    elements.headline.classList.remove('loading-animation');
+                    elements.headline.innerHTML = ''; // Clear any existing content
+                    
+                    let title;
+                    if (story && this.newsLoader.getStoryTitle) {
+                        title = this.newsLoader.getStoryTitle(story);
+                    } else {
+                        // Fallback for Education Reforms story
+                        title = story ? story.title : 'Exclusive: New Education Reforms Announced';
+                    }
+                    
+                    console.log('New title:', title);
+                    elements.headline.textContent = title;
+                } else {
+                    console.log('Headline element not found!');
+                }
+
+                // Get full content for read more functionality
+                let fullContent, summary;
+                
+                if (story && this.newsLoader.getStoryContent && this.newsLoader.getStorySummary) {
+                    fullContent = this.newsLoader.getStoryContent(story);
+                    summary = this.newsLoader.getStorySummary(story);
+                } else if (story) {
+                    // Fallback to direct story properties
+                    fullContent = story.content || 'Coverage of reforms aimed at improving education access. Digital education has become a catalyst for transformation in rural India...';
+                    summary = story.summary || 'Government unveils transformative education policy.';
+                } else {
+                    // Final fallback
+                    summary = 'Government unveils transformative education policy.';
+                    fullContent = 'Coverage of reforms aimed at improving education access. Digital education has become a catalyst for transformation in rural India...';
+                }
+                
+                // For Education Reforms story (ID #3), always show truncated content with read more
+                const shouldTruncate = (story && story.id === '3') || (fullContent && fullContent.length > summary.length + 100);
+                
+                if (elements.summary) {
+                    console.log('Updating summary...', 'shouldTruncate:', shouldTruncate);
+                    console.log('Summary:', summary);
+                    console.log('Full content length:', fullContent ? fullContent.length : 'No content');
+                    
+                    elements.summary.innerHTML = ''; // Clear existing content
+                    
+                    if (shouldTruncate) {
+                        // Show truncated content (first 200 characters + summary)
+                        const truncatedContent = summary + ' ' + fullContent.substring(0, 200) + '...';
+                        console.log('Setting truncated content:', truncatedContent.substring(0, 100) + '...');
+                        elements.summary.textContent = truncatedContent;
+                        elements.summary.setAttribute('data-full-content', fullContent);
+                        elements.summary.setAttribute('data-summary', summary);
+                        elements.summary.setAttribute('data-truncated', 'true');
+                    } else {
+                        console.log('Setting regular summary:', summary);
+                        elements.summary.textContent = summary;
+                        elements.summary.setAttribute('data-truncated', 'false');
+                    }
+                } else {
+                    console.log('Summary element not found!');
+                }
+                
+                if (elements.date) {
+                    let dateText;
+                    if (story && story.publishDate && this.newsLoader.formatDate) {
+                        dateText = this.newsLoader.formatDate(story.publishDate);
+                    } else if (story && story.publishDate) {
+                        dateText = new Date(story.publishDate).toLocaleDateString('en-IN', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        });
+                    } else {
+                        dateText = '11 October 2025';
+                    }
+                    elements.date.textContent = dateText;
+                }
+                
+                if (elements.image) {
+                    if (story.featuredImageUrl) {
+                        // Use provided image if available
+                        elements.image.src = story.featuredImageUrl;
+                        elements.image.alt = this.newsLoader.getStoryTitle ? this.newsLoader.getStoryTitle(story) : story.title;
+                        elements.image.style.background = 'none';
+                        elements.image.innerHTML = '';
+                    } else {
+                        // Use placeholder image based on story content
+                        const placeholderUrl = this.getPlaceholderImage(story, type === 'secondary' ? 1 : 0);
+                        elements.image.src = placeholderUrl;
+                        elements.image.alt = this.newsLoader.getStoryTitle ? this.newsLoader.getStoryTitle(story) : story.title;
+                        elements.image.style.background = 'none';
+                        elements.image.innerHTML = '';
+                        
+                        // Add error handling for image loading
+                        elements.image.onerror = () => {
+                            console.log('Image failed to load, using gradient fallback');
+                            elements.image.src = '';
+                            // Set themed gradients as fallback
+                            if (story.id === '3') {
+                                elements.image.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                                elements.image.innerHTML = `
+                                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; text-align: center; padding: 1.5rem;">
+                                        <i class="fas fa-graduation-cap" style="font-size: 2.5rem; margin-bottom: 0.8rem; opacity: 0.9;"></i>
+                                        <h3 style="margin: 0; font-size: 1rem; font-weight: 600;">Education Reforms</h3>
+                                        <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; opacity: 0.8;">Transforming India's Future</p>
+                                    </div>
+                                `;
+                            } else if (story.id === '1') {
+                                elements.image.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ffa726 100%)';
+                                elements.image.innerHTML = `
+                                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; text-align: center; padding: 1.5rem;">
+                                        <i class="fas fa-users" style="font-size: 2.5rem; margin-bottom: 0.8rem; opacity: 0.9;"></i>
+                                        <h3 style="margin: 0; font-size: 1rem; font-weight: 600;">Youth Leadership</h3>
+                                        <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; opacity: 0.8;">Shaping Tomorrow</p>
+                                    </div>
+                                `;
+                            } else {
+                                elements.image.style.background = 'linear-gradient(135deg, #4A90E2, #50E3C2)';
+                                elements.image.innerHTML = `
+                                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; text-align: center; padding: 1.5rem;">
+                                        <i class="fas fa-newspaper" style="font-size: 2.5rem; margin-bottom: 0.8rem; opacity: 0.9;"></i>
+                                        <h3 style="margin: 0; font-size: 1rem; font-weight: 600;">Breaking News</h3>
+                                        <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; opacity: 0.8;">Latest Updates</p>
+                                    </div>
+                                `;
+                            }
+                        };
+                    }
+                }
+
+                if (elements.category) {
+                    if (type === 'secondary') {
+                        elements.category.textContent = this.currentLang === 'te' ? 'ప్రధాన వార్త' : 'BREAKING';
+                    } else {
+                        elements.category.textContent = this.currentLang === 'te' ? 'ప్రత్యేక' : 'EXCLUSIVE';
+                    }
+                }
+
+                // Update read more button
+                if (elements.readMore) {
+                    if (shouldTruncate) {
+                        elements.readMore.style.display = 'inline-flex';
+                        elements.readMore.onclick = () => this.toggleReadMore(elements.summary, elements.readMore);
+                        
+                        // Add VNR logo gradient
+                        elements.readMore.style.background = 'linear-gradient(135deg, #FF6B35, #F7931E, #FFD23F)';
+                        elements.readMore.innerHTML = `
+                            <i class="fas fa-book-open"></i>
+                            <span data-en="Read Full Story" data-te="పూర్తి కథనం చదవండి">Read Full Story</span>
+                        `;
+                    } else {
+                        elements.readMore.style.display = 'none';
+                    }
+                }
+
+                // Update text content for new language
+                this.updateTextContent();
+            }
+
+            toggleReadMore(summaryElement, readMoreBtn) {
+                const isExpanded = summaryElement.getAttribute('data-expanded') === 'true';
+                const fullContent = summaryElement.getAttribute('data-full-content');
+                const summary = summaryElement.getAttribute('data-summary');
+                
+                if (isExpanded) {
+                    // Collapse - show truncated version
+                    const truncatedContent = summary + ' ' + fullContent.substring(0, 200) + '...';
+                    summaryElement.textContent = truncatedContent;
+                    summaryElement.setAttribute('data-expanded', 'false');
+                    readMoreBtn.innerHTML = `
+                        <i class="fas fa-book-open"></i>
+                        <span data-en="Read Full Story" data-te="పూర్తి కథనం చదవండి">Read Full Story</span>
+                    `;
+                } else {
+                    // Expand - show full content
+                    summaryElement.textContent = summary + ' ' + fullContent;
+                    summaryElement.setAttribute('data-expanded', 'true');
+                    readMoreBtn.innerHTML = `
+                        <i class="fas fa-compress-alt"></i>
+                        <span data-en="Show Less" data-te="తక్కువ చూపించు">Show Less</span>
+                    `;
+                }
+
+                // Update text content for language
+                this.updateTextContent();
             }
 
             loadSidebarStories() {
@@ -770,18 +1353,28 @@
                 const container = document.getElementById(containerId);
                 if (!container || !stories.length) return;
 
-                container.innerHTML = stories.map(story => `
-                    <article class="sidebar-story" data-aos="fade-up">
-                        <h4>${this.newsLoader.getStoryTitle(story)}</h4>
-                        <p>${this.newsLoader.getStorySummary(story).substring(0, 120)}...</p>
-                        <div class="story-meta">
-                            <div class="story-date">
-                                <i class="fas fa-clock"></i>
-                                <span>${this.newsLoader.formatDate(story.publishDate)}</span>
+                container.innerHTML = stories.map(story => {
+                    const imageUrl = this.getPlaceholderImage(story);
+                    return `
+                        <article class="sidebar-story" data-aos="fade-up">
+                            <div class="sidebar-story-image">
+                                <img src="${imageUrl}" 
+                                     alt="${this.newsLoader.getStoryTitle(story)}"
+                                     onerror="this.parentElement.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'; this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-newspaper\\'></i>';">
                             </div>
-                        </div>
-                    </article>
-                `).join('');
+                            <div class="sidebar-story-content">
+                                <h4>${this.newsLoader.getStoryTitle(story)}</h4>
+                                <p>${this.newsLoader.getStorySummary(story).substring(0, 120)}...</p>
+                                <div class="story-meta">
+                                    <div class="story-date">
+                                        <i class="fas fa-clock"></i>
+                                        <span>${this.newsLoader.formatDate(story.publishDate)}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
             }
 
             loadNewsGrid() {
@@ -797,8 +1390,12 @@
                 newsGrid.innerHTML = allStories.map((story, index) => `
                     <article class="news-card" data-aos="fade-up" data-aos-delay="${index * 100}">
                         <div class="news-card-image">
-                            <img src="${story.featuredImageUrl || `https://images.unsplash.com/photo-154091041989${index}?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80`}" 
-                                 alt="${this.newsLoader.getStoryTitle(story)}" loading="lazy">
+                            <img src="${story.featuredImageUrl || this.getPlaceholderImage(story, index)}" 
+                                 alt="${this.newsLoader.getStoryTitle(story)}" loading="lazy"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div style="display: none; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); height: 100%; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-image" style="font-size: 3rem; opacity: 0.7;"></i>
+                            </div>
                         </div>
                         <div class="news-card-content">
                             <span class="story-category">${this.getCategoryLabel(story.category)}</span>
@@ -881,7 +1478,43 @@
 
         // Initialize the news gallery when the page loads
         document.addEventListener('DOMContentLoaded', () => {
-            new NewsGallery();
+            console.log('DOM loaded, initializing NewsGallery...');
+            const gallery = new NewsGallery();
+            
+            // Force immediate update with featured stories
+            setTimeout(() => {
+                console.log('Forcing featured stories display...');
+                
+                // Try to load from JSON first
+                if (gallery.newsLoader.newsData) {
+                    gallery.loadFeaturedStory();
+                } else {
+                    // Fallback: Display stories directly
+                    console.log('JSON not loaded, using fallback stories');
+                    
+                    // Primary story - Education Reforms
+                    const primaryStory = {
+                        id: '3',
+                        title: 'Exclusive: New Education Reforms Announced',
+                        summary: 'Government unveils transformative education policy.',
+                        content: 'Coverage of reforms aimed at improving education access. Digital education has become a catalyst for transformation in rural India. With the advent of affordable smartphones and internet penetration, remote areas are witnessing a surge in access to quality education materials and real-time interactive lessons.',
+                        publishDate: '2025-10-11',
+                        category: 'exclusive_story'
+                    };
+                    gallery.displayStory(primaryStory, 'primary');
+                    
+                    // Secondary story - Youth Leadership
+                    const secondaryStory = {
+                        id: '1',
+                        title: "India's Youth Leading the Future",
+                        summary: "Exploring how young leaders are shaping India's political landscape.",
+                        content: "India's youth are increasingly taking roles in shaping politics and driving social reforms. This article examines how new leaders are emerging from diverse backgrounds, leveraging technology and social media to create grassroots impact.",
+                        publishDate: '2025-10-10',
+                        category: 'exclusive_story'
+                    };
+                    gallery.displayStory(secondaryStory, 'secondary');
+                }
+            }, 500);
         });
 
         // Handle smooth scrolling for navigation links
